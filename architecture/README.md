@@ -3,9 +3,10 @@
 This folder contains diagrams and screenshots showing the lab architecture.
 
 
-## Day 1 – Resource Group
+# Resource Group
 
 ![Resource Group](./images/day-1-resource-group.png)
 
-
-The resource group is used to scope all security lab resources, enabling centralized management, access control, and cost cleanup.
+The resource group scopes all lab resources into a single security boundary.
+This enables centralized visibility in Defender for Cloud, consistent posture
+assessment, and simple cleanup once testing is complete.
