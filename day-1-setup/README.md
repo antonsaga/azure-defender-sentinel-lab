@@ -1,7 +1,7 @@
-# Day 1 – Azure Defender for Cloud Setup
+# Azure Defender for Cloud Setup
 
-# Objective
-Set up a basic Azure environment and onboard a Windows virtual machine into Microsoft Defender for Cloud to establish baseline security visibility.
+# Goal
+Set up a basic Azure environment and onboard a Windows Server virtual machine into Microsoft Defender for Cloud to establish baseline security visibility.
 
 # What was done
 - Created an Azure resource group and virtual network
@@ -14,7 +14,7 @@ Set up a basic Azure environment and onboard a Windows virtual machine into Micr
 ### Defender for Cloud – Inventory
 ![Defender Inventory](./images/defender-onboarded_inventory.png)
 
-# Notes
 - VM is intentionally minimally hardened to surface baseline security recommendations
 
-
+# Initial Resource Health and Recommendations: 
+![Resource Health](./images/initial_resource_health.png)
