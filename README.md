@@ -30,8 +30,8 @@ azure-defender-sentinel-lab/
 │  └─ images/
 └─ day-1-setup/
    ├─ README.md
-   ├─ images/
-   └─ notes.md  (optional working notes)
+   └─ images/
+   
 ```
 
 
