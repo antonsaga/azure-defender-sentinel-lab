@@ -20,19 +20,19 @@ This lab is designed to mirror realistic SOC and cloud security workflows rather
 
 ## Lab Structure
 
-The repository is organised into clear stages to reflect how the environment evolves over time:
+The repository is organised into stages to reflect how the environment evolves over time:
 
-.
-├── architecture/
-│ ├── README.md
-│ └── images/
-│
-├── day-1-setup/
-│ ├── README.md
-│ ├── images/
-│ └── notes.md (optional / working notes)
-│
-└── README.md (this file)
+```text
+azure-defender-sentinel-lab/
+├─ README.md
+├─ architecture/
+│  ├─ README.md
+│  └─ images/
+└─ day-1-setup/
+   ├─ README.md
+   ├─ images/
+   └─ notes.md  (optional working notes)
+```
 
 
 Each stage includes:
@@ -51,7 +51,7 @@ Each stage includes:
 - Confirmed VM onboarding and visibility in Defender for Cloud
 - Reviewed initial security posture and baseline recommendations
 
-📁 Details and evidence:  
+📁 Day 1 link:  
 👉 [`day-1-setup/README.md`](./day-1-setup/README.md)
 
 📐 Architecture overview:  
@@ -67,23 +67,12 @@ Each stage includes:
 - Azure networking (VNet, NSG)
 - GitHub for documentation and evidence tracking
 
-Additional services (e.g. Microsoft Sentinel, Log Analytics, custom detections) will be introduced in later stages of the lab and documented as they are implemented.
-
 ---
 
-## Notes on Scope & Accuracy
-
-This repository intentionally documents **only what has been implemented and observed**.  
-Future work is clearly separated from completed steps to ensure accuracy and traceability.
-
-Screenshots and configuration details are included where relevant to support claims made in documentation.
-
----
-
-## Next Planned Steps
+## Future work
 
 - Enable and configure Log Analytics
 - Onboard Microsoft Sentinel
 - Generate and investigate security alerts
 - Create and tune detection rules
-- Simulate security incidents and document response workflows
+- Simulate security incidents and document response workflows.
