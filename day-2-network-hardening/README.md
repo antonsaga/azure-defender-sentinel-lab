@@ -12,7 +12,12 @@ This configuration enables remote administration but increases exposure at the n
 ![RDP exposed via NSG](./images/RDPopen.png)
 
 ## Changes applied
-*To be completed*
+Restricted inbound RDP (TCP/3389) by limiting the NSG rule to my public IP address instead of allowing traffic from any source.
+
+## Evidence — RDP restricted
+![RDP restricted](./images/RDPChange.png)
 
 ## Outcome
-*To be completed*
+Inbound exposure was reduced while maintaining administrative access. This change aligns with Microsoft Defender for Cloud network hardening recommendations.
+
+
