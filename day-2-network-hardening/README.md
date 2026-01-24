@@ -18,3 +18,12 @@ Reduce exposure of the VM by tightening inbound access (RDP/3389) and aligning w
 ## Notes / decisions
 - Why I changed the rule the way I did
 - Any trade-offs (e.g., keeping RDP open temporarily vs locking it down fully)
+
+
+## Initial findings
+
+The VM is currently assigned a Public IP and allows inbound RDP (TCP/3389) from any source via an NSG rule.
+
+This configuration allows remote administrative access but also increases exposure at the network layer.
+
+### Evidence
