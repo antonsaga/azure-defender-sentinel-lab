@@ -27,3 +27,4 @@ The VM is currently assigned a Public IP and allows inbound RDP (TCP/3389) from 
 This configuration allows remote administrative access but also increases exposure at the network layer.
 
 ### Evidence
+![RDP exposed via NSG](./images/RDPopen.png)
