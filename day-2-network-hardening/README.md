@@ -1,23 +1,29 @@
 # Day 2 — Network Hardening (NSG + RDP Exposure)
 
-## Goal
-Reduce exposure of the VM by tightening inbound access (RDP/3389) and aligning with Microsoft Defender for Cloud recommendations.
+## Objective
+Reduce unnecessary network exposure on the VM by reviewing and tightening NSG inbound rules, aligned with Defender for Cloud recommendations.
 
-## Initial state (baseline)
-The virtual machine is assigned a Public IP address and allows inbound RDP (TCP/3389) from any source via a Network Security Group rule.
+## Initial State
+- VM assigned a Public IP
+- Inbound RDP (TCP/3389) allowed from any source
+- Defender for Cloud flagged this as a high-severity recommendation
 
-This configuration enables remote administration but increases exposure at the network layer, which is flagged by Defender for Cloud as a high-risk recommendation.
+## Change Implemented
+Restricted inbound RDP (TCP/3389) by limiting the NSG rule to my public IP address instead of allowing access from any source.
 
-## Evidence — RDP exposed
-![RDP exposed via NSG](./images/RDPopen.png)
+## Evidence — Before
+![RDP open to any source](./images/RDPopen.png)
 
-## Changes applied
-Restricted inbound RDP (TCP/3389) by limiting the NSG rule to my public IP address instead of allowing traffic from any source.
-
-## Evidence — RDP restricted
+## Evidence — After
 ![RDP restricted](./images/RDPChange.png)
 
+## Defender for Cloud Status
+Defender for Cloud continues to flag the recommendation as unhealthy because the VM still has a Public IP and RDP enabled. This reflects Defender’s binary evaluation model rather than partial risk reduction.
+
 ## Outcome
-Inbound exposure was reduced while maintaining administrative access. This change aligns with Microsoft Defender for Cloud network hardening recommendations.
+Inbound exposure was reduced while maintaining administrative access. This represents a risk-reduction step rather than full remediation.
 
-
+## Next Steps
+- Evaluate Just-In-Time (JIT) VM access
+- Consider Azure Bastion or removing the Public IP
+- Observe Defender recommendation status after further changes
