@@ -17,13 +17,23 @@ Restricted inbound RDP (TCP/3389) by limiting the NSG rule to my public IP addre
 ## Evidence — After
 ![RDP restricted](./images/RDPChange.png)
 
-## Defender for Cloud Status
-Defender for Cloud continues to flag the recommendation as unhealthy because the VM still has a Public IP and RDP enabled. This reflects Defender’s binary evaluation model rather than partial risk reduction.
+![Defender For Cloud Results](./images/PostRDPchange.png)
+
+## Defender for Cloud status
+
+After restricting inbound RDP access to a trusted source IP, the original high-severity recommendation
+
+**“All network ports should be restricted on network security groups associated to your virtual machine”**
+
+was cleared.
+
+Following remediation, Defender for Cloud re-evaluated the VM and surfaced additional, previously masked security recommendations related to patching, encryption, vulnerability assessment, and backup.
+
+This reflects Defender’s layered posture assessment rather than a regression of the network hardening change.
 
 ## Outcome
-Inbound exposure was reduced while maintaining administrative access. This represents a risk-reduction step rather than full remediation.
 
-## Next Steps
-- Evaluate Just-In-Time (JIT) VM access
-- Consider Azure Bastion or removing the Public IP
-- Observe Defender recommendation status after further changes
+Inbound exposure to the virtual machine was reduced by restricting RDP (TCP/3389) to a trusted source IP.
+
+This change successfully remediated the original network exposure recommendation in Microsoft Defender for Cloud and reduced the external attack surface while maintaining administrative access.
+
