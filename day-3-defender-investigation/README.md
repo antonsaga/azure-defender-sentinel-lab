@@ -16,10 +16,16 @@ the following recommendation:
 
 “Machines should have a vulnerability assessment solution.”
 
+![Vulnerability assessment recommendation](./images/VulnAssessmentRecommendation.png)
+
 ## Validation Performed
 - Verified Defender for Servers Plan 2 is enabled at the subscription level
 - Confirmed vulnerability assessment and agentless scanning are enabled
 - Reviewed VM inventory and assessment data
+
+![Defender for Servers enabled](./images/DefenderforServerEnabled.png)
+
+![Vulnerability Assessment Enabled](./images/VulnerabilityAssessmentEnabled.png)
 
 ## Observations
 - Defender for Servers Plan 2 is active
@@ -27,6 +33,8 @@ the following recommendation:
 - No installed applications or vulnerability data are currently present for the VM
 
 This indicates the VM has not yet completed its initial vulnerability scan.
+
+![No application data present](./images/NoApplicationsInstalled.png)
 
 ## Explanation
 Defender for Cloud evaluates vulnerability assessment recommendations based on
