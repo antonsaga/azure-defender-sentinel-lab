@@ -49,5 +49,4 @@ the recommendation remains active.
 - VM inventory showing no installed application data
 
 ## Outcome
-Vulnerability assessment is correctly configured and pending initial scan
-completion. No misconfiguration was identified.
+Despite Defender for Servers and vulnerability assessment being enabled, no installed application or vulnerability data was observed during the initial runtime window. This is consistent with Defender for Cloud’s telemetry-driven inventory model on newly provisioned or low-activity virtual machines. The recommendation remains active until sufficient endpoint telemetry is collected.
