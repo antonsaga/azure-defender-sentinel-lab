@@ -6,8 +6,8 @@ Microsoft Defender for Cloud and Microsoft Sentinel.
 
 The goal of this lab is to develop and demonstrate practical security
 operations skills, including cloud posture management, endpoint protection,
-detection engineering, and investigation workflows, using real Azure services
-rather than simulated tooling.
+SIEM onboarding, detection engineering, and investigation workflows, using
+real Azure services rather than simulated tooling.
 
 ---
 
@@ -15,9 +15,10 @@ rather than simulated tooling.
 
 - Build a controlled Azure environment suitable for security experimentation
 - Onboard infrastructure into Microsoft Defender for Cloud
-- Observe baseline security posture and recommendations
+- Observe baseline security posture and security recommendations
 - Reduce exposure through targeted hardening actions
 - Validate security controls and Defender evaluation behaviour
+- Onboard and validate SIEM readiness using Microsoft Sentinel
 - Incrementally introduce logging, detections, and alerts
 
 This lab mirrors realistic SOC and cloud security workflows rather than
@@ -42,7 +43,10 @@ azure-defender-sentinel-lab/
 ├─ day-2-network-hardening/
 │  ├─ README.md
 │  └─ images/
-└─ day-3-defender-investigation/
+├─ day-3-defender-investigation/
+│  ├─ README.md
+│  └─ images/
+└─ day-4-sentinel-onboarding/
    ├─ README.md
    └─ images/
 ```
@@ -65,10 +69,10 @@ Each stage includes:
 - Reviewed initial security posture and baseline recommendations
 
 📁 Day 1:  
-👉 [`day-1-setup/README.md`](./day-1-setup/README.md)
+👉 [day-1-setup/README.md](./day-1-setup/README.md)
 
 📐 Architecture overview:  
-👉 [`architecture/README.md`](./architecture/README.md)
+👉 [architecture/README.md](./architecture/README.md)
 
 ---
 
@@ -80,7 +84,7 @@ Each stage includes:
 - Reduced external attack surface while maintaining administrative access
 
 📁 Day 2:  
-👉 [`day-2-network-hardening/README.md`](./day-2-network-hardening/README.md)
+👉 [day-2-network-hardening/README.md](./day-2-network-hardening/README.md)
 
 ---
 
@@ -92,7 +96,19 @@ Each stage includes:
 - Documented scan latency and inventory population behaviour on a newly started VM
 
 📁 Day 3:  
-👉 [`day-3-defender-investigation/README.md`](./day-3-defender-investigation/README.md)
+👉 [day-3-defender-investigation/README.md](./day-3-defender-investigation/README.md)
+
+---
+
+### Day 4 — Microsoft Sentinel Onboarding
+- Created a dedicated Log Analytics workspace for security monitoring
+- Enabled Microsoft Sentinel on the workspace
+- Verified successful Sentinel deployment
+- Confirmed Sentinel availability through the Microsoft Defender portal
+- Validated SIEM readiness prior to telemetry ingestion
+
+📁 Day 4:  
+👉 [day-4-sentinel-onboarding/README.md](./day-4-sentinel-onboarding/README.md)
 
 ---
 
@@ -100,6 +116,8 @@ Each stage includes:
 - Microsoft Azure
 - Microsoft Defender for Cloud
 - Microsoft Defender Vulnerability Management
+- Microsoft Sentinel
+- Log Analytics Workspace
 - Windows Server (Azure VM)
 - Azure networking (VNet, NSG)
 - GitHub for documentation and evidence tracking
@@ -107,9 +125,10 @@ Each stage includes:
 ---
 
 ## Future Work
-- Enable and configure Log Analytics workspace
-- Onboard Microsoft Sentinel
-- Collect and query security telemetry
-- Create and tune detection rules
-- Generate and investigate security alerts
-- Simulate incidents and document response workflows
+- Enable and validate Sentinel data connectors
+- Ingest and query security telemetry
+- Create and tune analytics (detection) rules
+- Investigate generated alerts and incidents
+- Perform threat hunting using KQL
+- Simulate incidents and document SOC response workflows
+
