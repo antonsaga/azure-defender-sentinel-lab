@@ -1,4 +1,4 @@
-# Day 5–6 — Analytics Rule Enablement (Microsoft Defender XDR → Sentinel)
+# Day 5 — Analytics Rule Enablement (Microsoft Defender XDR → Sentinel)
 
 ## Objective
 
