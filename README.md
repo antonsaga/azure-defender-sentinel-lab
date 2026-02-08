@@ -115,14 +115,14 @@ Each stage includes:
 
 ---
 
-### Day 5–6 — Analytics Rule Enablement (Defender XDR → Sentinel)
+### Day 5 — Analytics Rule Enablement (Defender XDR → Sentinel)
 - Installed the Microsoft Defender XDR solution from Sentinel Content Hub
 - Reviewed built-in analytics rule templates mapped to MITRE ATT&CK
 - Enabled a small baseline set of Microsoft-provided scheduled analytics rules
 - Verified rules are active and correctly mapped (severity / tactics / techniques)
 - Used Sentinel Logs (KQL) to confirm table availability (no telemetry yet)
 
-📁 Day 5–6:  
+📁 Day 5:  
 👉 [day-5-analytics-rules/README.md](./day-5-analytics-rules/README.md)
 
 ---
