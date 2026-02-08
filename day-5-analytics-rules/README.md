@@ -2,9 +2,7 @@
 
 ## Objective
 
-Establish baseline detection capability in Microsoft Sentinel by installing Microsoft Defender XDR content and enabling built-in analytics rules prior to generating live telemetry.
-
-This mirrors real-world SOC practice where detections are prepared and validated before attack simulation or production data ingestion.
+Establish baseline detection readiness in Microsoft Sentinel by installing Microsoft Defender XDR content and enabling built-in analytics rules before any endpoint telemetry is ingested.
 
 ---
 
@@ -14,7 +12,7 @@ This mirrors real-world SOC practice where detections are prepared and validated
 - Data Source: Microsoft Defender XDR
 - Workspace: azure-sentinel-security-lab
 - Rule Type: Scheduled analytics rules
-- Status: Enabled (no live alerts expected yet)
+- Status: Enabled (no alerts expected until endpoint telemetry is onboarded)
 
 ---
 
@@ -22,7 +20,7 @@ This mirrors real-world SOC practice where detections are prepared and validated
 
 ---
 
-### 1. Installed Microsoft Defender XDR Solution
+### 1. Installed Microsoft Defender XDR content in Sentinel
 
 - Installed the Microsoft Defender XDR solution from the Sentinel Content Hub
 - Verified successful installation and availability of analytics rule templates
@@ -45,7 +43,7 @@ This mirrors real-world SOC practice where detections are prepared and validated
 
 ---
 
-### 3. Enabled Built-in Analytics Rules
+### 3. Enabled the following Microsoft-provided analytics rules:
 
 Enabled the following Microsoft-provided detections:
 
@@ -91,7 +89,7 @@ All rules were enabled as scheduled analytics rules with default thresholds.
   - `DeviceProcessEvents`
 - No results returned, as expected
 - Endpoints and attack simulation not yet configured
-- Confirms detection pipeline readiness rather than detection failure
+- This confirms the detection pipeline is correctly configured, even though no telemetry is present yet.
 
 **Evidence**
 
@@ -101,14 +99,15 @@ All rules were enabled as scheduled analytics rules with default thresholds.
 
 ## Key Learnings & Takeaways
 
-- Analytics rules can be enabled before telemetry ingestion
-- Defender XDR content installs detection logic but does not generate alerts without:
+- Analytics rules can be enabled and validated before any telemetry exists
+- Installing Defender XDR content provides detection logic, but alerts require:
   - Endpoint onboarding
-  - Real or simulated attack activity
-- Exploratory KQL querying highlighted:
-  - Differences between table metadata and event fields
-  - Proper usage patterns when working across multiple data sources
-- This stage establishes a detection-ready SIEM, which is a prerequisite for attack simulation and alert validation
+  - Real or simulated execution activity
+- KQL exploration highlighted the difference between:
+  - Table availability
+  - Actual event ingestion
+- This stage focuses on detection preparation rather than alert volume
+
 
 ---
 
@@ -125,8 +124,11 @@ All rules were enabled as scheduled analytics rules with default thresholds.
 
 This lab demonstrates:
 
-- Correct SIEM detection lifecycle sequencing
-- Realistic SOC preparation practices
-- Familiarity with Microsoft Sentinel, Defender XDR, and MITRE ATT&CK
-- Understanding beyond “alert chasing” into detection engineering fundamentals
+This lab demonstrates:
+
+- Correct sequencing of SIEM detection setup
+- Realistic SOC preparation before attack simulation
+- Practical experience with Sentinel, Defender XDR, and MITRE ATT&CK
+- Understanding detection engineering beyond simply generating alerts
+
 
