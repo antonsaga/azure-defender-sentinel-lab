@@ -46,7 +46,10 @@ azure-defender-sentinel-lab/
 ├─ day-3-defender-investigation/
 │  ├─ README.md
 │  └─ images/
-└─ day-4-sentinel-onboarding/
+├─ day-4-sentinel-onboarding/
+│  ├─ README.md
+│  └─ images/
+└─ day-5-analytics-rules/
    ├─ README.md
    └─ images/
 ```
@@ -112,6 +115,18 @@ Each stage includes:
 
 ---
 
+### Day 5–6 — Analytics Rule Enablement (Defender XDR → Sentinel)
+- Installed the Microsoft Defender XDR solution from Sentinel Content Hub
+- Reviewed built-in analytics rule templates mapped to MITRE ATT&CK
+- Enabled a small baseline set of Microsoft-provided scheduled analytics rules
+- Verified rules are active and correctly mapped (severity / tactics / techniques)
+- Used Sentinel Logs (KQL) to confirm table availability (no telemetry yet)
+
+📁 Day 5–6:  
+👉 [day-5-analytics-rules/README.md](./day-5-analytics-rules/README.md)
+
+---
+
 ## Tools & Technologies
 - Microsoft Azure
 - Microsoft Defender for Cloud
@@ -125,10 +140,9 @@ Each stage includes:
 ---
 
 ## Future Work
-- Enable and validate Sentinel data connectors
-- Ingest and query security telemetry
-- Create and tune analytics (detection) rules
+- Onboard an endpoint to Microsoft Defender for Endpoint to generate telemetry
+- Validate alert creation and incident generation in Sentinel
+- Create and tune custom analytics (detection) rules
 - Investigate generated alerts and incidents
 - Perform threat hunting using KQL
 - Simulate incidents and document SOC response workflows
-
