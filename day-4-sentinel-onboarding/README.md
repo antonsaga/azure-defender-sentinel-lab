@@ -1,25 +1,40 @@
 # Day 4 — Microsoft Sentinel Onboarding
 
 ## Objective
-Deploy Microsoft Sentinel to establish a centralized SIEM platform for
-security monitoring, detection, and investigation.
+Onboard Microsoft Sentinel to the environment and validate SIEM readiness prior to ingesting security telemetry.
 
-## Actions Taken
-- Created a dedicated Log Analytics workspace for security telemetry
+---
+
+## Actions Performed
+- Created a dedicated Log Analytics workspace for security monitoring
 - Enabled Microsoft Sentinel on the workspace
-- Activated the Microsoft Sentinel free trial
-- Verified successful onboarding and workspace availability
+- Verified successful Sentinel deployment
+- Confirmed Sentinel availability through the Microsoft Defender portal
 
-## Observations
-- Sentinel is enabled but no data sources are connected yet
-- No incidents or analytics rules are present by design
-- Additional configuration is required to ingest telemetry
+---
 
 ## Evidence
-- Log Analytics workspace creation
-- Microsoft Sentinel successfully enabled
-- Sentinel Guides and Overview pages visible
+
+### Log Analytics Workspace Created
+![Log Analytics workspace created](./images/SentinelWorkspaceCreated.png)
+
+### Microsoft Sentinel Enabled
+![Sentinel successfully added](./images/SentinelEnabled.png)
+
+### Sentinel Overview
+![Sentinel overview](./images/SentinelOverview.png)
+
+### Sentinel in Defender Portal
+![Sentinel in Defender portal](./images/SentinelDefenderPortal.png)
+
+---
+
+## Observations
+- Microsoft Sentinel is now accessed via the Microsoft Defender portal as part of Microsoft’s unified SecOps experience
+- No data connectors or workbooks are present yet, which is expected prior to telemetry ingestion
+- The SIEM platform is operational and ready for log sources
+
+---
 
 ## Outcome
-Microsoft Sentinel is successfully deployed and ready for data ingestion,
-analytics rule creation, and incident response workflows.
+Microsoft Sentinel has been successfully onboarded and is ready for data ingestion, analytics rule creation, and SOC workflows in subsequent stages.
