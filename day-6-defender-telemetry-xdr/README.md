@@ -1,7 +1,7 @@
 # Day 6 – Defender Telemetry vs XDR Analytics Rules
 
 ## Objective
-Understand how Microsoft Defender for Endpoint telemetry, alerts, and XDR-based analytics rules in Microsoft Sentinel interact, and why certain endpoint behaviours do not automatically result in incidents.
+Validate endpoint telemetry ingestion in Microsoft Defender for Endpoint and understand why certain endpoint behaviours do not result in alerts or Sentinel incidents when using XDR analytics rules.
 
 ---
 
@@ -13,60 +13,57 @@ Understand how Microsoft Defender for Endpoint telemetry, alerts, and XDR-based 
 
 ---
 
-## Activity Performed
+## Phase 1 – Baseline Telemetry Validation
 
-### 1. Java Installation
-Java (OpenJDK) was installed on the endpoint to simulate a realistic application execution chain.
+### PowerShell Activity
+Initial PowerShell commands were executed on the endpoint to confirm that activity was being ingested and displayed in the Defender timeline.
 
-![Java Installed](images/01-java-installed.png)
+![PowerShell Commands Executed](images/01-powershell-baseline.png)
 
----
+### Defender Timeline
+The PowerShell activity was successfully captured in Microsoft Defender for Endpoint, confirming telemetry ingestion and endpoint visibility.
 
-### 2. Java Launching PowerShell
-A simple Java program was created to launch PowerShell using execution policy bypass, simulating a potentially suspicious parent-child process relationship.
-
-![Java Launches PowerShell](images/02-java-launches-powershell.png)
+![Defender Timeline](images/02-defender-powershell-telemetry.png)
 
 ---
 
-### 3. Defender Telemetry Observation
-The PowerShell activity was fully captured within Microsoft Defender for Endpoint, confirming that endpoint telemetry and process relationships were being recorded correctly.
+## Phase 2 – Attempted Detection via Java
 
-![Defender Telemetry](images/03-defender-powershell-telemetry.png)
+### Java Installation
+Java (OpenJDK) was installed to simulate a realistic application execution chain.
+
+![Java Installed](images/03-java-installed.png)
+
+### Java Launching PowerShell
+A Java program was created to launch PowerShell using execution policy bypass, simulating a potentially suspicious parent-child process relationship.
+
+![Java Launches PowerShell](images/04-java-launches-powershell.png)
 
 ---
 
-### 4. Alert Outcome
-Despite the suspicious execution chain, no Defender alert or incident was generated for this activity.
+## Detection Outcome
 
-![No Defender Alerts](images/04-defender-no-alerts.png)
+### Defender Alerts
+Despite PowerShell execution and the Java → PowerShell process chain being recorded, no Defender alert or incident was generated.
+
+![No Defender Alerts](images/05-defender-no-alerts.png)
 
 This demonstrates that:
-- Telemetry alone does not guarantee alert generation
-- XDR analytics rules rely on Defender creating alerts first
-- Not all suspicious behaviour is classified as malicious by default
+- Telemetry alone does not guarantee alert creation
+- XDR analytics rules depend on Defender generating alerts
+- Behaviour that is not classified as malicious will not be forwarded to Sentinel
 
 ---
 
-### 5. Endpoint Validation
+## Endpoint Validation
 The endpoint was confirmed as successfully onboarded and reporting to Microsoft Defender for Endpoint.
 
-![Endpoint Onboarded](images/05-endpoint-onboarded.png)
-
----
-
-## Validation Test (Control)
-To confirm that end-to-end alerting was functional, a controlled malware test (EICAR) was executed. This successfully generated a Defender alert, validating that alerting and ingestion pipelines were working as expected.
-
-![EICAR Alert](images/06-eicar-alert-validation.png)
+![Endpoint Onboarded](images/06-endpoint-onboarded.png)
 
 ---
 
 ## Outcome and Key Takeaways
-- XDR analytics rules forward Defender alerts; they do not independently detect behaviour
-- Benign or low-confidence behaviour may generate telemetry without alerts
-- Behaviour-based detection requires custom KQL analytics rules in Sentinel
-- Understanding platform detection boundaries is critical for SOC operations
-
-This day highlights the difference between telemetry visibility and actionable detections.
-
+- Defender telemetry provides visibility without necessarily generating alerts
+- XDR analytics rules forward alerts; they do not independently detect behaviour
+- Behaviour-based detection requires custom Sentinel analytics rules
+- Understanding these distinctions is critical for effective SOC detection engineering
