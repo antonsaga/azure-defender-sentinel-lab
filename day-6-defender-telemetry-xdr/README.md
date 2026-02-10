@@ -2,9 +2,9 @@
 
 ## Objective
 
-Validate endpoint telemetry ingestion in **Microsoft Defender for Endpoint** and understand why certain endpoint behaviours do **not** result in alerts or Sentinel incidents when using **XDR analytics rule templates**.
+Validate endpoint telemetry ingestion in Microsoft Defender for Endpoint and understand why certain endpoint behaviours do not result in alerts or Sentinel incidents when using XDR analytics rule templates.
 
-This day focuses on confirming telemetry visibility, endpoint timeline accuracy, and analysing gaps between raw activity and alert generation.
+This day focuses on telemetry confidence, timeline visibility, and analysing the gap between raw endpoint activity and alert generation.
 
 ---
 
@@ -20,11 +20,10 @@ This day focuses on confirming telemetry visibility, endpoint timeline accuracy,
 
 ## Phase 1 – Baseline Telemetry Validation
 
-Before attempting to trigger any alerts, the environment was validated to ensure a clean baseline state.
+Before attempting to trigger any alerts, the environment was checked to confirm a clean baseline state.
 
-### No Existing Alerts or Timeline Noise
-
-The Defender portal was checked to confirm there were no pre-existing alerts or endpoint timeline activity.
+- No active alerts
+- No existing endpoint timeline activity
 
 ![Empty Alerts Page](images/EmptyAlertsPageDefenderforEndpoint.png)  
 ![Empty Timeline](images/EmptyTimelineDefenderforEndpoint.png)
@@ -33,28 +32,30 @@ The Defender portal was checked to confirm there were no pre-existing alerts or 
 
 ## Phase 2 – PowerShell Activity Generation
 
-Multiple PowerShell commands were executed directly on the endpoint to generate benign but detectable activity.  
-The goal was to validate:
+Several PowerShell commands were executed directly on the endpoint to generate controlled, benign activity.  
+The purpose was to confirm that Defender was capturing:
 
-- Process execution telemetry
-- User context visibility
-- Timeline population
+- Process execution events
+- User context
+- Command-line activity
 
 ![Running PowerShell Commands](images/RunningPowershellCommands.png)  
 ![Running PowerShell Commands Continued](images/RunningPowershellCommands2.png)
 
 ---
 
-## Phase 3 – Defender for Endpoint Timeline Validation
+## Phase 3 – Defender Timeline & MITRE ATT&CK Mapping
 
-Following execution, the Defender device timeline successfully recorded the activity. Events included:
+The executed PowerShell activity appeared correctly in the Defender for Endpoint device timeline.
 
-- `powershell.exe` execution
-- Parent–child process relationships
-- Associated MITRE techniques
-- User context (`labadmin`)
+Key observations:
+- `powershell.exe` execution recorded
+- Parent–child relationships visible
+- Events enriched with **MITRE ATT&CK technique mapping**
+- User context (`labadmin`) clearly shown
 
-This confirmed Defender telemetry ingestion was functioning correctly.
+The **Additional information** column provides Defender’s interpretation of the activity, including mapped ATT&CK techniques (e.g. PowerShell execution and user-initiated execution).  
+This confirms that Defender is not only ingesting telemetry, but also **classifying behaviour against known attack techniques**.
 
 ![PowerShell Activity in Defender Timeline](images/PowershellactivityinDefenderforEndpoint.png)
 
@@ -62,7 +63,7 @@ This confirmed Defender telemetry ingestion was functioning correctly.
 
 ## Phase 4 – Endpoint Visibility & Asset Context
 
-The endpoint was reviewed within Defender to confirm onboarding status, OS details, and exposure context.
+The endpoint was reviewed within Defender to confirm onboarding status, OS details, and exposure context prior to further testing.
 
 ![Defender Endpoint Assets](images/Defenderforendpointassets.png)  
 ![Defender Endpoint Details](images/Defenderforendpointdetails.png)
@@ -71,7 +72,7 @@ The endpoint was reviewed within Defender to confirm onboarding status, OS detai
 
 ## Phase 5 – Attempted XDR Analytics Rule Scenario (Java → PowerShell)
 
-To simulate a more advanced execution chain, Java was installed with the intention of triggering a suspicious parent–child process relationship.
+To test a more suspicious execution chain, Java was installed with the intention of triggering an analytics rule based on a non-standard parent process launching PowerShell.
 
 ### Java Installation & Validation
 
@@ -79,9 +80,9 @@ To simulate a more advanced execution chain, Java was installed with the intenti
 
 ---
 
-### Java Program Executing PowerShell
+### Java Executing PowerShell
 
-A simple Java application was created to execute PowerShell using execution policy bypass flags.
+A simple Java program was created to execute PowerShell using execution policy bypass flags.
 
 ![Java File Launching PowerShell](images/JavaFiletolaunchPowershell.png)
 
@@ -89,8 +90,8 @@ A simple Java application was created to execute PowerShell using execution poli
 
 ### Execution Outcome
 
-The Java application successfully launched PowerShell and executed commands at the OS level.  
-However, **no Defender alert or Sentinel incident was generated**.
+The Java application successfully launched PowerShell and executed commands on the endpoint.  
+However, no Defender alert or Sentinel incident was generated.
 
 ![Java PowerShell Execution Successful](images/Javapowershellcommandsuccessful.png)
 
@@ -98,36 +99,34 @@ However, **no Defender alert or Sentinel incident was generated**.
 
 ## Findings & Analysis
 
-### What Worked
+### Confirmed
 
-- Defender for Endpoint telemetry ingestion confirmed  
-- PowerShell activity visible in device timeline  
-- Parent–child process execution captured  
-- Endpoint context and asset visibility validated  
+- Defender for Endpoint telemetry ingestion is working
+- Endpoint timeline captures PowerShell activity reliably
+- MITRE ATT&CK technique mapping is applied at the event level
+- Parent–child execution relationships are visible
 
-### What Did Not Trigger
+### Not Observed
 
-- No XDR analytics rule alert  
-- No Sentinel incident created  
+- No XDR analytics rule alert
+- No Sentinel incident created
 
-### Key Insight
+### Analysis
 
-> Not all suspicious-looking behaviour automatically generates alerts.  
-> XDR analytics rules depend on rule logic, signal confidence, thresholds, and correlation — not just process execution alone.
+Although the execution chain (Java spawning PowerShell) appears suspicious in isolation, it did not meet the conditions required by the enabled XDR analytics rules.
 
-This highlights the importance of:
-- Validating telemetry before tuning detections  
-- Iterating on analytics rule logic  
-- Understanding built-in noise suppression and alert tuning  
+This highlights that:
+- Analytics rules rely on specific behaviour patterns and signal confidence
+- Not all ATT&CK-mapped activity results in an alert
+- Telemetry visibility and detection logic are separate concerns
 
 ---
 
 ## Next Steps
 
-- Review and refine analytics rule conditions
-- Validate rule logic using KQL
-- Introduce more deterministic detection scenarios (e.g. encoded commands, known LOLBIN abuse)
+- Review and adjust analytics rule logic and thresholds
+- Validate rule conditions directly using KQL
+- Introduce more deterministic detection scenarios (e.g. encoded commands or known LOLBIN abuse)
 - Correlate Defender signals into Sentinel incidents
 
 ---
-
