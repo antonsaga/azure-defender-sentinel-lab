@@ -74,6 +74,20 @@ Rule configuration:
 
 ---
 
+### Platform Note – Unified Security Operations
+
+Analytics rules were created within the Microsoft Defender portal rather than the classic Microsoft Sentinel blade.
+
+This is due to the Unified Security Operations Platform onboarding model, where:
+
+- Microsoft Sentinel and Defender XDR operate within a consolidated experience  
+- Scheduled detection rules are configured centrally  
+- Incidents are generated and synchronised across the unified portal  
+
+While the interface differs from the traditional Sentinel blade, the ingestion pipeline and KQL detection logic remain unchanged.
+
+---
+
 ## Phase 4 – Triggering the Detection
 
 PowerShell execution was manually triggered on the VM to validate the detection.
@@ -93,7 +107,7 @@ Commands executed:
 
 The scheduled rule successfully generated an alert in the unified Defender portal.
 
-![Alert surfaced in Defender](./images/Activity_in_Sentinel.png)
+![Alert details view](./images/Custom_rule_firing.png)
 
 Drilling into the alert confirmed:
 
@@ -103,8 +117,6 @@ Drilling into the alert confirmed:
 - InitiatingProcessFileName: `explorer.exe`  
 - Detection source: Scheduled detection  
 
-![Alert details view](./images/Custom_rule_firing.png)
-
 Query results were visible within the alert context:
 
 ![Alert event breakdown](./images/Custom_alert_details_page.png)
@@ -113,11 +125,32 @@ Query results were visible within the alert context:
 
 ## Observations & Key Learnings
 
-- Enabling Defender XDR ingestion is required for advanced hunting tables to populate in Sentinel.
+- Defender XDR ingestion must be enabled for advanced hunting tables to populate in Sentinel.
 - Scheduled analytics rules evaluate historical data within the defined lookup window.
-- Event grouping prevents alert duplication within the same execution cycle.
-- Parent-child process filtering significantly impacts detection precision.
-- Due to Unified Security Operations Platform onboarding, analytics rules were created within the Microsoft Defender portal rather than the classic Sentinel blade. Incidents are generated centrally and synchronised across the unified experience.
+- Alerts can trigger on events that occurred prior to rule creation if still within the evaluation period.
+- Event grouping prevents duplicate alerts within the same execution cycle.
+- Parent-child process filtering significantly improves detection precision and reduces noise.
+
+---
+
+## Detection Engineering Reflection – MITRE ATT&CK Mapping
+
+The initial rule was created without explicitly assigning a MITRE ATT&CK technique.
+
+Although the alert categorised the activity under **Execution**, no specific technique ID was mapped during rule configuration.
+
+For production-ready detections, this rule should be aligned to:
+
+- **T1059.001 – Command and Scripting Interpreter: PowerShell**
+
+Mapping detections to MITRE ATT&CK provides:
+
+- Standardised threat categorisation  
+- Improved detection coverage tracking  
+- Clear alignment to adversary behaviours  
+- Better reporting for SOC maturity assessments  
+
+Future improvements would include explicitly mapping technique IDs during rule creation to ensure structured threat coverage across tactics.
 
 ---
 
@@ -132,4 +165,4 @@ Endpoint activity
 → Alert generation  
 → Incident investigation in unified Defender portal  
 
-Day 7 demonstrates successful end-to-end alert lifecycle validation.
+Day 7 demonstrates a full end-to-end detection lifecycle, from telemetry validation to alert triage.
