@@ -29,7 +29,7 @@ DETECTION RULE 1 – SUSPICIOUS POWERSHELL EXECUTION FLAGS
 
 Rule Creation
 
-(Insert screenshot – Rule creation page here)
+![Rule 1 Creation](images/Rule1_suspicious_powershell_flags.png)
 
 
 Threat Scenario
@@ -57,7 +57,7 @@ T1059.001 – Command and Scripting Interpreter: PowerShell
 
 Detection Query
 
-(Insert screenshot – KQL query here)
+![Rule 1 KQL](images/Rule1_query_KQL.png)
 
 
 Why the KQL Detection Works
@@ -80,6 +80,8 @@ Rule Visible in Microsoft Defender / Sentinel
 
 Potential Automation Options
 
+![Rule 1 Automation](images/No_automation_rules.png)
+
 In production SOC environments, this detection could trigger automated response actions such as:
 
 - isolating the compromised endpoint
@@ -94,7 +96,7 @@ DETECTION RULE 2 – OFFICE APPLICATION SPAWNING POWERSHELL
 
 Rule Creation
 
-(Insert screenshot – Rule creation page here)
+![Rule 2 Creation](images/Rule2_Office_spawning_powershell.png)
 
 
 Threat Scenario
@@ -118,7 +120,7 @@ T1059.001 – PowerShell
 
 Detection Query
 
-(Insert screenshot – KQL query here)
+![Rule 2 KQL](images/Rule2_query_KQL.png)
 
 
 Why the KQL Detection Works
@@ -132,8 +134,7 @@ Since Office applications rarely spawn PowerShell during legitimate activity, th
 
 Rule Visible in Microsoft Defender / Sentinel
 
-(Insert screenshot – Rule visible in Defender here)
-
+![Rule 2 Saved](images/Rule2_saved.png)
 
 Potential Automation Options
 
@@ -151,7 +152,7 @@ DETECTION RULE 3 – LIVING OFF THE LAND BINARY (LOLBIN) ABUSE
 
 Rule Creation
 
-(Insert screenshot – Rule creation page here)
+![Rule 3 Creation](images/Rule3_Creation_Page.png)
 
 
 Threat Scenario
@@ -178,7 +179,7 @@ T1218 – Signed Binary Proxy Execution
 
 Detection Query
 
-(Insert screenshot – KQL query here)
+![Rule 3 KQL](images/Rule3_KQL.png)
 
 
 Why the KQL Detection Works
@@ -192,8 +193,7 @@ These binaries are frequently used in post-exploitation frameworks and malware d
 
 Rule Visible in Microsoft Defender / Sentinel
 
-(Insert screenshot – Rule visible in Defender here)
-
+![Rule 3 Saved](images/Rule3_saved.png)
 
 Potential Automation Options
 
@@ -211,7 +211,7 @@ DETECTION RULE 4 – NEW LOCAL ACCOUNT CREATION
 
 Rule Creation
 
-(Insert screenshot – Rule creation page here)
+![Rule 4 Creation](images/Rule4_Creation_Page.png)
 
 
 Threat Scenario
@@ -231,7 +231,7 @@ T1136 – Create Account
 
 Detection Query
 
-(Insert screenshot – KQL query here)
+![Rule 4 KQL](images/Rule4_KQL.png)
 
 
 Why the KQL Detection Works
@@ -247,7 +247,7 @@ Unexpected account creation activity may indicate attacker persistence or privil
 
 Rule Visible in Microsoft Defender / Sentinel
 
-(Insert screenshot – Rule visible in Defender here)
+![Rule 4 Saved](images/Rule4_created.png)
 
 
 Potential Automation Options
@@ -266,7 +266,7 @@ DETECTION RULE 5 – SUSPICIOUS EXTERNAL NETWORK CONNECTIONS
 
 Rule Creation
 
-(Insert screenshot – Rule creation page here)
+![Rule 5 Creation](images/Rule5_Creation_Page.png)
 
 
 Threat Scenario
@@ -287,7 +287,7 @@ T1071 – Application Layer Protocol
 
 Detection Query
 
-(Insert screenshot – KQL query here)
+![Rule 5 KQL](images/Rule5_KQL.png)
 
 
 Why the KQL Detection Works
@@ -301,7 +301,7 @@ By summarizing connection counts per device and remote IP, the rule highlights s
 
 Rule Visible in Microsoft Defender / Sentinel
 
-(Insert screenshot – Rule visible in Defender here)
+![Rule 5 Saved](images/Rule5_created.png)
 
 
 Potential Automation Options
