@@ -20,6 +20,8 @@ real Azure services rather than simulated tooling.
 - Validate security controls and Defender evaluation behaviour
 - Onboard and validate SIEM readiness using Microsoft Sentinel
 - Incrementally introduce logging, detections, and alerts
+- Develop custom detection rules using KQL
+- Document SOC-style monitoring and detection engineering workflows
 
 This lab mirrors realistic SOC and cloud security workflows rather than
 following a purely academic or certification-driven approach.
@@ -31,7 +33,6 @@ following a purely academic or certification-driven approach.
 The repository is organised into stages to reflect how the environment evolves
 over time:
 
-```text
 azure-defender-sentinel-lab/
 ├─ README.md
 ├─ architecture/
@@ -49,11 +50,18 @@ azure-defender-sentinel-lab/
 ├─ day-4-sentinel-onboarding/
 │  ├─ README.md
 │  └─ images/
-└─ day-5-analytics-rules/
+├─ day-5-analytics-rules/
+│  ├─ README.md
+│  └─ images/
+├─ day-6-defender-telemetry-xdr/
+│  ├─ README.md
+│  └─ images/
+├─ day-7-custom-detection-rule/
+│  ├─ README.md
+│  └─ images/
+└─ day-8-detection-engineering/
    ├─ README.md
    └─ images/
-```
-
 
 Each stage includes:
 - A concise explanation of actions taken
@@ -72,10 +80,10 @@ Each stage includes:
 - Reviewed initial security posture and baseline recommendations
 
 📁 Day 1:  
-👉 [day-1-setup/README.md](./day-1-setup/README.md)
+👉 ./day-1-setup/README.md
 
 📐 Architecture overview:  
-👉 [architecture/README.md](./architecture/README.md)
+👉 ./architecture/README.md
 
 ---
 
@@ -87,7 +95,7 @@ Each stage includes:
 - Reduced external attack surface while maintaining administrative access
 
 📁 Day 2:  
-👉 [day-2-network-hardening/README.md](./day-2-network-hardening/README.md)
+👉 ./day-2-network-hardening/README.md
 
 ---
 
@@ -99,7 +107,7 @@ Each stage includes:
 - Documented scan latency and inventory population behaviour on a newly started VM
 
 📁 Day 3:  
-👉 [day-3-defender-investigation/README.md](./day-3-defender-investigation/README.md)
+👉 ./day-3-defender-investigation/README.md
 
 ---
 
@@ -111,7 +119,7 @@ Each stage includes:
 - Validated SIEM readiness prior to telemetry ingestion
 
 📁 Day 4:  
-👉 [day-4-sentinel-onboarding/README.md](./day-4-sentinel-onboarding/README.md)
+👉 ./day-4-sentinel-onboarding/README.md
 
 ---
 
@@ -123,7 +131,44 @@ Each stage includes:
 - Used Sentinel Logs (KQL) to confirm table availability (no telemetry yet)
 
 📁 Day 5:  
-👉 [day-5-analytics-rules/README.md](./day-5-analytics-rules/README.md)
+👉 ./day-5-analytics-rules/README.md
+
+---
+
+### Day 6 — Defender Telemetry & XDR Integration
+- Confirmed Defender XDR telemetry ingestion into Microsoft Sentinel
+- Validated availability of endpoint telemetry tables within Log Analytics
+- Explored Microsoft Defender tables such as DeviceProcessEvents and DeviceNetworkEvents
+- Confirmed SIEM readiness for detection engineering and alert generation
+- Observed how Defender telemetry becomes searchable through Sentinel KQL queries
+
+📁 Day 6:  
+👉 ./day-6-defender-telemetry-xdr/README.md
+
+---
+
+### Day 7 — Custom Detection Rule Development
+- Created a custom Microsoft Sentinel analytics rule using KQL
+- Designed the rule to detect suspicious activity within Defender telemetry
+- Configured rule scheduling, severity level, and incident creation settings
+- Validated rule deployment within Sentinel Analytics
+- Documented rule configuration and monitoring behaviour
+
+📁 Day 7:  
+👉 ./day-7-custom-detection-rule/README.md
+
+---
+
+### Day 8 — Detection Engineering: Enterprise Rule Pack
+- Designed a set of custom Sentinel detection rules targeting common attacker behaviours
+- Implemented multiple KQL-based analytics rules mapped to MITRE ATT&CK techniques
+- Detected activity including PowerShell abuse, malicious Office macro execution,
+  Living-Off-The-Land binary abuse, suspicious account creation, and abnormal network activity
+- Documented detection logic and rule behaviour
+- Explored potential SOC automation workflows and response playbooks
+
+📁 Day 8:  
+👉 ./day-8-detection-engineering/README.md
 
 ---
 
@@ -140,9 +185,9 @@ Each stage includes:
 ---
 
 ## Future Work
-- Onboard an endpoint to Microsoft Defender for Endpoint to generate telemetry
-- Validate alert creation and incident generation in Sentinel
-- Create and tune custom analytics (detection) rules
-- Investigate generated alerts and incidents
-- Perform threat hunting using KQL
-- Simulate incidents and document SOC response workflows
+- Generate simulated attacker activity within the lab environment
+- Validate alert generation and incident creation within Sentinel
+- Expand the detection rule set with additional attacker techniques
+- Perform threat hunting exercises using KQL
+- Document investigation workflows for detected incidents
+- Build automated response playbooks for incident containment
