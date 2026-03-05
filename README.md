@@ -33,35 +33,41 @@ following a purely academic or certification-driven approach.
 The repository is organised into stages to reflect how the environment evolves
 over time:
 
+## Lab Structure
+
+The repository is organised into stages to reflect how the environment evolves over time:
+
+```text
 azure-defender-sentinel-lab/
-├─ README.md
-├─ architecture/
-│  ├─ README.md
-│  └─ images/
-├─ day-1-setup/
-│  ├─ README.md
-│  └─ images/
-├─ day-2-network-hardening/
-│  ├─ README.md
-│  └─ images/
-├─ day-3-defender-investigation/
-│  ├─ README.md
-│  └─ images/
-├─ day-4-sentinel-onboarding/
-│  ├─ README.md
-│  └─ images/
-├─ day-5-analytics-rules/
-│  ├─ README.md
-│  └─ images/
-├─ day-6-defender-telemetry-xdr/
-│  ├─ README.md
-│  └─ images/
-├─ day-7-custom-detection-rule/
-│  ├─ README.md
-│  └─ images/
-└─ day-8-detection-engineering/
-   ├─ README.md
-   └─ images/
+├── README.md
+├── architecture/
+│   ├── README.md
+│   └── images/
+├── day-1-setup/
+│   ├── README.md
+│   └── images/
+├── day-2-network-hardening/
+│   ├── README.md
+│   └── images/
+├── day-3-defender-investigation/
+│   ├── README.md
+│   └── images/
+├── day-4-sentinel-onboarding/
+│   ├── README.md
+│   └── images/
+├── day-5-analytics-rules/
+│   ├── README.md
+│   └── images/
+├── day-6-defender-telemetry-xdr/
+│   ├── README.md
+│   └── images/
+├── day-7-custom-detection-rule/
+│   ├── README.md
+│   └── images/
+└── day-8-detection-engineering/
+    ├── README.md
+    └── images/
+```
 
 Each stage includes:
 - A concise explanation of actions taken
@@ -80,10 +86,10 @@ Each stage includes:
 - Reviewed initial security posture and baseline recommendations
 
 📁 Day 1:  
-👉 ./day-1-setup/README.md
+👉 [day-1-setup/README.md](day-1-setup/README.md)
 
-📐 Architecture overview:  
-👉 ./architecture/README.md
+📐 Architecture overview  
+👉 [View architecture documentation](architecture/README.md)
 
 ---
 
@@ -95,7 +101,7 @@ Each stage includes:
 - Reduced external attack surface while maintaining administrative access
 
 📁 Day 2:  
-👉 ./day-2-network-hardening/README.md
+👉 [day-2-network-hardening/README.md](day-2-network-hardening/README.md)
 
 ---
 
@@ -107,7 +113,7 @@ Each stage includes:
 - Documented scan latency and inventory population behaviour on a newly started VM
 
 📁 Day 3:  
-👉 ./day-3-defender-investigation/README.md
+👉 [day-3-defender-investigation/README.md](day-3-defender-investigation/README.md)
 
 ---
 
@@ -119,7 +125,7 @@ Each stage includes:
 - Validated SIEM readiness prior to telemetry ingestion
 
 📁 Day 4:  
-👉 ./day-4-sentinel-onboarding/README.md
+👉 [day-4-sentinel-onboarding/README.md](day-4-sentinel-onboarding/README.md)
 
 ---
 
@@ -131,7 +137,7 @@ Each stage includes:
 - Used Sentinel Logs (KQL) to confirm table availability (no telemetry yet)
 
 📁 Day 5:  
-👉 ./day-5-analytics-rules/README.md
+👉 [day-5-analytics-rules/README.md](day-5-analytics-rules/README.md)
 
 ---
 
@@ -143,7 +149,7 @@ Each stage includes:
 - Observed how Defender telemetry becomes searchable through Sentinel KQL queries
 
 📁 Day 6:  
-👉 ./day-6-defender-telemetry-xdr/README.md
+👉 [day-6-defender-telemetry-xdr/README.md](day-6-defender-telemetry-xdr/README.md)
 
 ---
 
@@ -155,7 +161,7 @@ Each stage includes:
 - Documented rule configuration and monitoring behaviour
 
 📁 Day 7:  
-👉 ./day-7-custom-detection-rule/README.md
+👉 [day-7-custom-detection-rule/README.md](day-7-custom-detection-rule/README.md)
 
 ---
 
@@ -168,7 +174,7 @@ Each stage includes:
 - Explored potential SOC automation workflows and response playbooks
 
 📁 Day 8:  
-👉 ./day-8-detection-engineering/README.md
+👉 [day-8-detection-engineering/README.md](day-8-detection-engineering/README.md)
 
 ---
 
