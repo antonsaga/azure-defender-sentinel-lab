@@ -1,3 +1,15 @@
+## Detection Validation Scenarios
+
+This lab validates the detection rules created in Day 8 by simulating realistic attack activity.
+
+The following scenarios are tested:
+
+1. Suspicious PowerShell Execution
+2. Living-Off-The-Land Binary (LOLBIN) Abuse
+3. Privilege Escalation via Account Creation
+
+---
+
 ## Simulation 1 – Suspicious PowerShell Execution Detection
 
 ### Objective
