@@ -234,6 +234,8 @@ This simulation demonstrates several important SOC detection concepts:
 
 Although a Sentinel detection rule was configured to detect LOLBIN activity, the **endpoint protection platform prevented the malicious activity earlier in the detection chain**, which is common in real-world environments where multiple security layers work together.
 
+In enterprise environments, Microsoft Defender Tamper Protection prevents attackers from disabling endpoint protection settings. This ensures that even if an attacker obtains administrative privileges, Defender security controls remain enforced. Security teams monitor attempts to modify Defender configuration through SIEM alerts and endpoint telemetry.
+
 ---
 
 
