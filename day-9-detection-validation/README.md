@@ -238,4 +238,28 @@ In enterprise environments, Microsoft Defender Tamper Protection prevents attack
 
 ---
 
+# Simulation 2 — Living-Off-The-Land Binary (LOLBIN) Abuse Detection
 
+---
+
+## Simulation 3 — Privilege Escalation via Local Administrator Account Creation
+
+This simulation tests detection of **privilege escalation techniques**, where attackers create new accounts and elevate them to administrative privileges for persistence and control of the system.
+
+Creating unauthorized administrator accounts is a common attacker technique used after initial access.
+
+---
+
+### Step 1 — Create a New Local User
+
+A new user account was created using the `net user` command.
+
+```
+net user attacker Password123! /add
+```
+Then the newly created account was added to the local Administrators group.
+
+```
+net localgroup administrators attacker /add
+```
+![Privilege Escalation](./images/Sim3_privilege_escalation_command.png)
