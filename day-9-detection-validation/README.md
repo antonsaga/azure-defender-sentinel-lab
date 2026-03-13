@@ -302,4 +302,11 @@ Security insight:
 
 This detection helps identify potential persistence mechanisms used by attackers after gaining access to a system.
 
-SOC analysts can use this alert to investigate unauthorized account creation and prevent attackers from maintaining privileged access.
+This activity represents **unauthorized privilege escalation** and would be classified as a **True Positive security alert**.
+
+Recommended response actions to these:
+
+• Disable or remove the malicious account  
+• Investigate the originating user session  
+• Review other recent account creation events  
+• Perform endpoint threat hunting for additional persistence mechanisms
