@@ -238,7 +238,7 @@ In enterprise environments, Microsoft Defender Tamper Protection prevents attack
 
 ---
 
-# Simulation 2 — Living-Off-The-Land Binary (LOLBIN) Abuse Detection
+# Simulation 3 — Privilege Escalation via Local Administrator Account Creation
 
 ---
 
@@ -262,4 +262,44 @@ Then the newly created account was added to the local Administrators group.
 ```
 net localgroup administrators attacker /add
 ```
-![Privilege Escalation](./images/Sim3_privilege_escalation_command.png)
+![Privilege Escalation](./images/Sim3_commandpromptcode.png)
+
+### Step 2 — Sentinel Detection Rule Triggered
+
+The custom Sentinel analytics rule **New Local Administrator Account Created** detected the suspicious activity and generated an alert.
+
+This rule monitors Defender telemetry to identify new account creation events which may indicate attacker persistence.
+
+Screenshot — Sentinel alert firing:
+
+![Alert Fired](./images/Sim3_alertfired.png)
+
+---
+
+### Step 3 — Incident Investigation
+
+Opening the incident reveals additional context such as device information, timestamps, and the account responsible for executing the commands.
+
+This allows SOC analysts to investigate the activity and determine whether the account creation is legitimate or malicious.
+
+Screenshot — Incident investigation details:
+
+![Incident Investigation](./images/Sim3_Attackstory.png)
+
+---
+
+### Detection Summary
+
+Technique simulated:
+
+- **MITRE ATT&CK T1136 — Create Account**
+
+Detection source:
+
+- **Microsoft Sentinel Analytics Rule**
+
+Security insight:
+
+This detection helps identify potential persistence mechanisms used by attackers after gaining access to a system.
+
+SOC analysts can use this alert to investigate unauthorized account creation and prevent attackers from maintaining privileged access.
