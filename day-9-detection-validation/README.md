@@ -138,7 +138,7 @@ This workflow mirrors the real-world process used by SOC analysts when validatin
 
 ---
 
-# 🔹 Simulation 2 — Living-Off-The-Land Binary (LOLBIN) Abuse Detection
+## Simulation 2 — Living-Off-The-Land Binary (LOLBIN) Abuse Detection
 
 ---
 
