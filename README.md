@@ -64,7 +64,13 @@ azure-defender-sentinel-lab/
 ├── day-7-custom-detection-rule/
 │   ├── README.md
 │   └── images/
-└── day-8-detection-engineering/
+├── day-8-detection-engineering/
+│   ├── README.md
+│   └── images/
+├── day-9-detection-validation/
+│   ├── README.md
+│   └── images/
+└── day-9-part-2-soc-investigation/
     ├── README.md
     └── images/
 ```
@@ -178,22 +184,72 @@ Each stage includes:
 
 ---
 
+### Day 9 — Detection Validation (Attack Simulation)
+- Simulated attacker techniques to trigger detections:
+  - Encoded PowerShell execution
+  - LOLBIN abuse using certutil
+  - Privilege escalation via account creation
+- Validated custom analytics rules successfully triggered alerts
+- Reviewed alert details and underlying telemetry
+- Improved detection rules by adding entity mapping
+- Observed duplicate alerts due to rule scheduling and query windows
+
+📁 Day 9:
+📁 👉 [day-9-detection-validation/README.md](day-9-detection-validation/README.md)
+
+---
+
+### Day 9 part 2 — SOC Investigation Workflow
+- Investigated alerts generated from simulated attack activity
+- Performed threat hunting using KQL queries to validate events
+- Analysed account creation and privilege escalation behaviour
+- Conducted process analysis using Microsoft Defender timeline
+- Correlated findings across alerts, logs, and endpoint telemetry
+- Classified alerts as a True Positive based on observed activity
+- Assessed the potential impact of the behaviour in a real environment
+- Defined appropriate response and remediation actions
+
+This stage focuses on the investigation side of security operations, showing how alerts are analysed and validated rather than just generated.
+
+📁 Day 9 part 2:
+📁 👉 [day-9-part-2-SOC-investigation/README.md](day-9-part-2-SOC-investigation/README.md)
+
+---
+
 ## Tools & Technologies
+
 - Microsoft Azure
 - Microsoft Defender for Cloud
-- Microsoft Defender Vulnerability Management
-- Microsoft Sentinel
+- Microsoft Defender for Endpoint (XDR)
+- Microsoft Sentinel (SIEM)
 - Log Analytics Workspace
+- KQL (Kusto Query Language)
 - Windows Server (Azure VM)
-- Azure networking (VNet, NSG)
-- GitHub for documentation and evidence tracking
+- Azure Networking (VNet, NSG)
+- GitHub for documentation
 
 ---
 
 ## Future Work
-- Generate simulated attacker activity within the lab environment
-- Validate alert generation and incident creation within Sentinel
-- Expand the detection rule set with additional attacker techniques
-- Perform threat hunting exercises using KQL
-- Document investigation workflows for detected incidents
-- Build automated response playbooks for incident containment
+
+Future work for this lab will look to potentially implement:
+
+- Expand attack simulations (e.g. lateral movement, persistence techniques)
+- Implement automated response playbooks using Logic Apps
+- Introduce identity-based detections and Conditional Access scenarios
+- Develop more advanced threat hunting queries
+- Extend investigation workflows across multiple data sources
+
+---
+
+## Lab Outcome
+
+This lab demonstrates an end-to-end security workflow, including:
+
+- Detection engineering using Microsoft Sentinel  
+- Validation of alerts through simulated attacker behaviour  
+- Threat hunting using KQL queries  
+- Endpoint investigation using Microsoft Defender  
+- SOC-style triage and decision making  
+
+The project reflects how security analysts work in real environments, moving from detection to investigation and making informed decisions based on evidence.
