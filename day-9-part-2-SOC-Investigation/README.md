@@ -128,7 +128,7 @@ The alert was reviewed and classified as a **True Positive**.
 
 The activity observed matches the actions performed during the simulation, where a new user account was created and added to the local Administrators group.
 
-![Classified Alert](./images/Process_analysis.png)
+![Classified Alert](./images/Resolved_Alert.png)
 
 ---
 
