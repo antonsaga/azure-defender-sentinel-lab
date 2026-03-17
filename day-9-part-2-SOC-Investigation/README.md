@@ -95,29 +95,83 @@ The query identified events showing that a new account was created and subsequen
 ### 📸 Query Results
 ![KQL Results](./images/Sentinel_logs.png)
 
-## 🌳 Process Analysis
+## Process Analysis
 
-Process analysis was conducted using Microsoft Defender for Endpoint timeline data.
+I initially searched for `cmd.exe` activity in the device timeline, however this returned a large amount of normal system noise which wasn’t directly useful for the investigation.
 
-Initial searches for `cmd.exe` returned a high volume of system-related activity. To refine the investigation, filtering was performed using the created account name (`soclab`), allowing identification of relevant security events.
+To refine the search, I pivoted to the specific account name `soclab`, which allowed me to identify the relevant activity more clearly.
 
-The following activity was observed:
+From this, I was able to observe:
 
-- powershell.exe created a local user account using net.exe
-- powershell.exe manipulated an account using net.exe
-- net.exe created process net1.exe
-- A new user account `soclab` was successfully created on the device
+- The `soclab` account being created on the device  
+- PowerShell executing commands via `net.exe`  
+- Account manipulation activity linked to the newly created user  
 
-This confirms that the account creation and privilege escalation activity was executed using native Windows administrative utilities.
+This confirms that the actions were performed using native Windows commands (`net user` and `net localgroup`), rather than any external tooling.
 
-The process chain indicates that PowerShell was used to invoke `net.exe`, a common technique used by attackers to blend malicious actions with legitimate system tools (Living-Off-The-Land technique).
+The process chain shows PowerShell spawning `net.exe`, which is a common way to carry out administrative actions on a system. This type of behaviour is often seen in both legitimate administration and attacker activity, so context is important when assessing it.
 
-![Process Analysis](./images/process-analysis-soclab.png)
+![Process Analysis](./images/Process_analysis.png)
 
-### 🧠 Investigation Insight
+### Investigation Insight
 
 Searching for generic process names such as `cmd.exe` produced significant background noise from legitimate system activity. 
 
 Refining the search using specific indicators (e.g. account name `soclab`) allowed for precise identification of malicious behaviour.
 
 This demonstrates the importance of filtering and pivoting during SOC investigations to isolate relevant events.
+
+## Incident Triage & Analyst Conclusion
+
+### Alert Classification
+The alert was reviewed and classified as a **True Positive**.
+
+The activity observed matches the actions performed during the simulation, where a new user account was created and added to the local Administrators group.
+
+![Classified Alert](./images/Process_analysis.png)
+
+---
+
+### Summary of Findings
+- A new account `soclab` was created on the device  
+- The account was added to the local Administrators group  
+- Activity was executed using PowerShell and native Windows utilities (`net.exe`)  
+- Detection was triggered by the custom Sentinel analytics rule  
+
+This behaviour is consistent with a **privilege escalation technique**, where an attacker creates a new administrative account to maintain access.
+
+---
+
+### Impact Assessment
+If this activity occurred in a real environment, it would represent a **high-risk security incident**.
+
+An attacker with administrative access would have the ability to:
+- Execute commands across the system  
+- Disable or bypass security controls  
+- Maintain persistence on the device  
+- Move laterally within the network  
+
+---
+
+### Recommended Response Actions
+- Disable or remove the suspicious account (`soclab`)  
+- Investigate the originating user session  
+- Review recent account creation and privilege escalation events  
+- Check for additional persistence mechanisms on the host  
+- Run a full endpoint investigation using Defender  
+
+---
+
+## ✅ Lab Outcome
+
+This lab simulates a full SOC investigation workflow, from alert generation to triage and analysis.
+
+It demonstrates the ability to:
+- Validate detection rules  
+- Investigate alerts using Microsoft Defender and Sentinel  
+- Perform threat hunting using KQL  
+- Analyse process activity on endpoints  
+- Make informed security decisions based on evidence  
+
+This reflects real-world SOC analyst responsibilities in a production environment.
+
