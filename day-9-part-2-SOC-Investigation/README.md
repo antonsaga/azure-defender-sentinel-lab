@@ -62,4 +62,6 @@ This action was performed on the device:
 The alert was generated based on endpoint telemetry collected by Microsoft Defender and analysed through a custom Sentinel analytics rule.
 
 ### 📸 Alert Details
-![Alert Details](./images/day10-alert-details.png)
+![Alert Details](./images/Alert_further_details_2.png)
+
+![Alert Details 2](./images/Alert_further_details.png)
