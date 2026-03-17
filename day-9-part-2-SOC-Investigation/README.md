@@ -93,4 +93,4 @@ The query identified events showing that a new account was created and subsequen
 - The activity originated from the same device
 
 ### 📸 Query Results
-![KQL Results](./images/day10-kql-results.png)
+![KQL Results](./images/Sentinel_logs.png)
