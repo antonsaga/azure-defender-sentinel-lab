@@ -15,4 +15,4 @@ This type of activity is commonly associated with attacker persistence and privi
 ---
 
 ## 📸 Alert Overview
-![Alert Overview]
+![Alert Overview](./images/Alert_initial_details.png)
