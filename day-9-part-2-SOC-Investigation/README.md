@@ -14,12 +14,12 @@ This type of activity is commonly associated with attacker persistence and privi
 
 ---
 
-## 📸 Alert Overview
+## Alert Overview
 ![Alert Overview](./images/Alert_initial_details.png)
 
 ![Alert Overview 2](./images/Alert_initial_details_2.png)
 
-## 🚨 Incident Overview
+## Incident Overview
 
 An alert was triggered indicating that a new local user account was created and added to the Administrators group on a Windows Server.
 
@@ -36,7 +36,7 @@ The creation of a privileged account represents a high-risk action, as it grants
 
 This behaviour is commonly observed in post-compromise scenarios where attackers establish persistence.
 
-## 🔍 Initial Triage
+## Initial Triage
 
 The alert indicates that a new account was created and assigned administrative privileges.
 
@@ -51,7 +51,7 @@ Key investigation questions we would look for in these situations:
 - Is the activity authorised?
 - Were additional actions performed on the system?
 
-## 🔎 Alert Investigation
+##  Alert Investigation
 
 The alert details confirm that a new account named **soclab** was created and added to the local Administrators group.
 
@@ -61,7 +61,36 @@ This action was performed on the device:
 
 The alert was generated based on endpoint telemetry collected by Microsoft Defender and analysed through a custom Sentinel analytics rule.
 
-### 📸 Alert Details
+### Alert Details
 ![Alert Details](./images/Alert_further_details_2.png)
 
 ![Alert Details 2](./images/Alert_further_details.png)
+
+## Detection Behaviour Observation
+
+During investigation, multiple alerts were generated for the same activity.
+
+This occurred because the analytics rule runs on a scheduled interval while querying a time window of historical data.
+
+As a result, the same event was detected multiple times across consecutive rule executions.
+
+This highlights the importance of:
+- Alert deduplication
+- Rule tuning
+- Suppression logic
+
+to reduce noise in real-world SOC environments.
+
+## Threat Hunting (KQL Analysis)
+
+To validate the alert, KQL queries were executed against endpoint telemetry in Microsoft Sentinel.
+
+The query identified events showing that a new account was created and subsequently added to the local Administrators group.
+
+### Key Findings:
+- The account **soclab** was successfully created
+- The account was added to the Administrators group shortly after
+- The activity originated from the same device
+
+### 📸 Query Results
+![KQL Results](./images/day10-kql-results.png)
