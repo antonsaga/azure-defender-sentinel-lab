@@ -18,3 +18,48 @@ This type of activity is commonly associated with attacker persistence and privi
 ![Alert Overview](./images/Alert_initial_details.png)
 
 ![Alert Overview 2](./images/Alert_initial_details_2.png)
+
+## 🚨 Incident Overview
+
+An alert was triggered indicating that a new local user account was created and added to the Administrators group on a Windows Server.
+
+### Key Details:
+- **Alert Name:** New Local Administrator Account Created
+- **Severity:** High
+- **Category:** Persistence
+- **Device:** win-srv-sec-lab-01
+- **Account Created:** soclab
+- **Detection Source:** Microsoft Sentinel Analytics Rule
+
+### Initial Assessment:
+The creation of a privileged account represents a high-risk action, as it grants full control over the system.
+
+This behaviour is commonly observed in post-compromise scenarios where attackers establish persistence.
+
+## 🔍 Initial Triage
+
+The alert indicates that a new account was created and assigned administrative privileges.
+
+This activity is suspicious because:
+- Administrative accounts provide full system access
+- Attackers frequently create accounts to maintain persistence
+- This may indicate post-compromise behaviour
+
+Key investigation questions we would look for in these situations:
+- Who created the account?
+- When was it created?
+- Is the activity authorised?
+- Were additional actions performed on the system?
+
+## 🔎 Alert Investigation
+
+The alert details confirm that a new account named **soclab** was created and added to the local Administrators group.
+
+This action was performed on the device:
+
+- **Device:** win-srv-sec-lab-01
+
+The alert was generated based on endpoint telemetry collected by Microsoft Defender and analysed through a custom Sentinel analytics rule.
+
+### 📸 Alert Details
+![Alert Details](./images/day10-alert-details.png)
