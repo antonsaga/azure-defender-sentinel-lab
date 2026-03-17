@@ -16,3 +16,5 @@ This type of activity is commonly associated with attacker persistence and privi
 
 ## 📸 Alert Overview
 ![Alert Overview](./images/Alert_initial_details.png)
+
+![Alert Overview 2](./images/Alert_initial_details_2.png)
