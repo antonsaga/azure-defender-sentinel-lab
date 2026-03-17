@@ -195,7 +195,7 @@ Each stage includes:
 - Observed duplicate alerts due to rule scheduling and query windows
 
 📁 Day 9:
-📁 👉 [day-9-detection-validation/README.md](day-9-detection-validation/README.md)
+👉 [day-9-detection-validation/README.md](day-9-detection-validation/README.md)
 
 ---
 
@@ -212,7 +212,7 @@ Each stage includes:
 This stage focuses on the investigation side of security operations, showing how alerts are analysed and validated rather than just generated.
 
 📁 Day 9 part 2:
-📁 👉 [day-9-part-2-SOC-investigation/README.md](day-9-part-2-SOC-investigation/README.md)
+👉 [day-9-part-2-SOC-investigation/README.md](day-9-part-2-SOC-investigation/README.md)
 
 ---
 
@@ -232,24 +232,30 @@ This stage focuses on the investigation side of security operations, showing how
 
 ## Future Work
 
-Future work for this lab will look to potentially implement:
+There are a few areas I would build on from this lab, particularly around moving from detection into prevention and hardening.
 
-- Expand attack simulations (e.g. lateral movement, persistence techniques)
-- Implement automated response playbooks using Logic Apps
-- Introduce identity-based detections and Conditional Access scenarios
-- Develop more advanced threat hunting queries
-- Extend investigation workflows across multiple data sources
+- Implement Defender for Cloud recommendations to improve the overall security posture of the VM and subscription  
+- Apply system hardening controls such as Attack Surface Reduction (ASR) rules and application control  
+- Explore Conditional Access and identity-based protections for stronger access control  
+- Build automated response actions using Logic Apps to reduce manual triage effort  
+- Expand simulations to include more realistic attacker behaviour (e.g. persistence, lateral movement)  
+- Continue developing KQL queries for deeper threat hunting and investigation  
+
+A follow-up lab will focus more on security controls (e.g. DLP and data protection), which can then be tied back into this environment.
 
 ---
 
 ## Lab Outcome
 
-This lab demonstrates an end-to-end security workflow, including:
+This lab shows the full lifecycle of a security event in a cloud environment, from setup through to investigation.
 
-- Detection engineering using Microsoft Sentinel  
-- Validation of alerts through simulated attacker behaviour  
-- Threat hunting using KQL queries  
-- Endpoint investigation using Microsoft Defender  
-- SOC-style triage and decision making  
+- Built and secured an Azure environment using Defender for Cloud  
+- Onboarded and configured Microsoft Sentinel for monitoring  
+- Developed and tested custom detection rules using KQL  
+- Simulated attacker behaviour to validate alerting  
+- Investigated alerts using Defender and Sentinel telemetry  
+- Performed triage and made a clear decision based on the evidence  
 
-The project reflects how security analysts work in real environments, moving from detection to investigation and making informed decisions based on evidence.
+Overall, this project reflects how security analysts work in practice — not just generating alerts, but understanding what they mean, validating them, and deciding what action should be taken.
+
+It also highlights the next step in maturity, which is moving beyond detection into strengthening controls and reducing the likelihood of these events occurring in the first place.
