@@ -94,3 +94,30 @@ The query identified events showing that a new account was created and subsequen
 
 ### 📸 Query Results
 ![KQL Results](./images/Sentinel_logs.png)
+
+## 🌳 Process Analysis
+
+Process analysis was conducted using Microsoft Defender for Endpoint timeline data.
+
+Initial searches for `cmd.exe` returned a high volume of system-related activity. To refine the investigation, filtering was performed using the created account name (`soclab`), allowing identification of relevant security events.
+
+The following activity was observed:
+
+- powershell.exe created a local user account using net.exe
+- powershell.exe manipulated an account using net.exe
+- net.exe created process net1.exe
+- A new user account `soclab` was successfully created on the device
+
+This confirms that the account creation and privilege escalation activity was executed using native Windows administrative utilities.
+
+The process chain indicates that PowerShell was used to invoke `net.exe`, a common technique used by attackers to blend malicious actions with legitimate system tools (Living-Off-The-Land technique).
+
+![Process Analysis](./images/process-analysis-soclab.png)
+
+### 🧠 Investigation Insight
+
+Searching for generic process names such as `cmd.exe` produced significant background noise from legitimate system activity. 
+
+Refining the search using specific indicators (e.g. account name `soclab`) allowed for precise identification of malicious behaviour.
+
+This demonstrates the importance of filtering and pivoting during SOC investigations to isolate relevant events.
