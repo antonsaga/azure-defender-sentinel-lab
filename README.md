@@ -189,7 +189,7 @@ azure-defender-sentinel-lab/
 - Classified alerts as True Positive  
 - Defined response and remediation actions  
 
-📁 [SOC Investigation Documentation](day-9-part-2-soc-investigation/README.md)
+📁 [SOC Investigation Documentation](day-9-part-2-SOC-Investigation/README.md)
 
 ---
 
