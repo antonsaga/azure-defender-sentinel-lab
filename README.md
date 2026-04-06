@@ -247,15 +247,17 @@ A follow-up lab will focus more on security controls (e.g. DLP and data protecti
 
 ## Lab Outcome
 
-This lab shows the full lifecycle of a security event in a cloud environment, from setup through to investigation.
+This lab walks through building and operating a basic cloud security monitoring setup using Microsoft Defender and Sentinel, with a focus on how alerts are actually generated and investigated.
 
-- Built and secured an Azure environment using Defender for Cloud  
-- Onboarded and configured Microsoft Sentinel for monitoring  
-- Developed and tested custom detection rules using KQL  
-- Simulated attacker behaviour to validate alerting  
-- Investigated alerts using Defender and Sentinel telemetry  
-- Performed triage and made a clear decision based on the evidence  
+Built an Azure environment and onboarded it into Defender for Cloud
+Configured Microsoft Sentinel and connected Defender telemetry
+Created and tuned custom detection rules using KQL
+Simulated attacker behaviour to generate realistic alerts
+Investigated alerts using Defender and Sentinel data
+Carried out basic triage and validated activity using endpoint telemetry
 
-Overall, this project reflects how security analysts work in practice — not just generating alerts, but understanding what they mean, validating them, and deciding what action should be taken.
+The main takeaway from this lab was understanding how detection logic, telemetry, and alerting fit together in practice. It also highlighted some of the limitations, such as alert duplication, timing windows, and how certain activity can be blocked by Defender before it reaches Sentinel.
 
-It also highlights the next step in maturity, which is moving beyond detection into strengthening controls and reducing the likelihood of these events occurring in the first place.
+The next step is to focus more on prevention and control implementation, reducing the likelihood of this activity occurring in the first place.
+
+Overall, this project reflects how security analysts work in practice. Not just generating alerts, but understanding what they mean, validating them, and deciding what action should be taken.
