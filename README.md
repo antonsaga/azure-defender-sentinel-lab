@@ -1,13 +1,21 @@
 # Azure Defender & Sentinel Security Lab
 
-This repository documents a hands-on Azure security lab focused on building,
-observing, and improving a cloud security monitoring environment using
-Microsoft Defender for Cloud and Microsoft Sentinel.
+This project simulates a real-world cloud security monitoring environment using Microsoft Defender for Cloud and Microsoft Sentinel.
 
-The goal of this lab is to develop and demonstrate practical security
-operations skills, including cloud posture management, endpoint protection,
-SIEM onboarding, detection engineering, and investigation workflows, using
-real Azure services rather than simulated tooling.
+The lab focuses on how security analysts actually work in practice — onboarding systems, improving security posture, building detections, and investigating alerts using real telemetry.
+
+Rather than following a certification-style setup, this environment was built to reflect day-to-day SOC and cloud security workflows.
+
+---
+
+## What This Lab Demonstrates
+
+- Azure security configuration and cloud environment setup  
+- Microsoft Defender for Cloud onboarding and posture analysis  
+- Microsoft Sentinel (SIEM) deployment and data integration  
+- Detection engineering using KQL  
+- Alert validation through simulated attacker activity  
+- SOC-style investigation and triage using endpoint telemetry  
 
 ---
 
