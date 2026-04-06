@@ -43,7 +43,12 @@ over time:
 
 ## Lab Structure
 
-The repository is organised into stages to reflect how the environment evolves over time:
+The lab is organised into stages to reflect how a security environment evolves over time:
+
+Each stage includes:
+- Actions performed  
+- Supporting screenshots  
+- Observations on system behaviour and security impact
 
 ```text
 azure-defender-sentinel-lab/
