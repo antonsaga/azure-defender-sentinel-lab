@@ -1,4 +1,29 @@
-# Azure Defender & Sentinel Security Lab
+## Project Overview
+
+This repository contains two related labs focused on cloud security and endpoint protection:
+
+### Lab 1 — Azure Defender & Sentinel (Complete)
+A full end-to-end cloud security monitoring environment covering:
+- Defender for Cloud onboarding
+- Microsoft Sentinel deployment
+- Detection engineering (KQL)
+- Alert validation and SOC-style investigation
+
+👉 You are currently viewing Lab 1 (complete project)
+
+---
+
+### Lab 2 — Security Controls & Endpoint Hardening (In Progress)
+A follow-up lab focused on implementing and testing security controls, including:
+- AppLocker (application control)
+- Attack Surface Reduction (ASR) rules
+- Endpoint hardening techniques
+- Data protection (DLP)
+
+👉 View Lab 2: [Lab 2 Security Controls](./Lab-2-security-controls/README.md)
+
+
+# Lab 1: Azure Defender & Sentinel Security Lab
 
 This project simulates a real-world cloud security monitoring environment using Microsoft Defender for Cloud and Microsoft Sentinel.
 
