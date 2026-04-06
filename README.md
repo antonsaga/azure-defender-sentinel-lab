@@ -2,7 +2,7 @@
 
 This project simulates a real-world cloud security monitoring environment using Microsoft Defender for Cloud and Microsoft Sentinel.
 
-The lab focuses on how security analysts actually work in practice — onboarding systems, improving security posture, building detections, and investigating alerts using real telemetry.
+The lab focuses on how security analysts actually work in practice - onboarding systems, improving security posture, building detections, and investigating alerts using real telemetry.
 
 Rather than following a certification-style setup, this environment was built to reflect day-to-day SOC and cloud security workflows.
 
@@ -35,11 +35,6 @@ This lab mirrors realistic SOC and cloud security workflows rather than
 following a purely academic or certification-driven approach.
 
 ---
-
-## Lab Structure
-
-The repository is organised into stages to reflect how the environment evolves
-over time:
 
 ## Lab Structure
 
@@ -88,189 +83,160 @@ azure-defender-sentinel-lab/
     └── images/
 ```
 
-Each stage includes:
-- A concise explanation of actions taken
-- Supporting screenshots as evidence
-- Observations on Defender behaviour and security posture changes
-
----
-
 ## Current Progress
 
 ### Day 1 — Azure Defender for Cloud Setup
-- Created a dedicated Azure resource group and virtual network
-- Deployed a Windows Server virtual machine
-- Enabled Microsoft Defender for Cloud at the subscription level
-- Confirmed VM onboarding and visibility in Defender for Cloud
-- Reviewed initial security posture and baseline recommendations
+- Created a dedicated Azure resource group and virtual network  
+- Deployed a Windows Server virtual machine  
+- Enabled Microsoft Defender for Cloud at the subscription level  
+- Confirmed VM onboarding and visibility in Defender for Cloud  
+- Reviewed initial security posture and baseline recommendations  
 
-📁 Day 1:  
-👉 [day-1-setup/README.md](day-1-setup/README.md)
-
-📐 Architecture overview  
-👉 [View architecture documentation](architecture/README.md)
+📁 [Day 1 Documentation](day-1-setup/README.md)  
+📐 [Architecture Overview](architecture/README.md)
 
 ---
 
 ### Day 2 — Network Hardening (NSG + RDP Exposure)
-- Reviewed VM networking configuration and NSG inbound rules
-- Identified unrestricted inbound RDP (TCP/3389) exposure
-- Restricted RDP access to a trusted source IP
-- Observed Defender for Cloud re-evaluation and recommendation changes
-- Reduced external attack surface while maintaining administrative access
+- Reviewed VM networking configuration and NSG inbound rules  
+- Identified unrestricted inbound RDP (TCP/3389) exposure  
+- Restricted RDP access to a trusted source IP  
+- Observed Defender for Cloud recommendation updates  
+- Reduced external attack surface while maintaining access  
 
-📁 Day 2:  
-👉 [day-2-network-hardening/README.md](day-2-network-hardening/README.md)
+📁 [Day 2 Documentation](day-2-network-hardening/README.md)
 
 ---
 
-### Day 3 — Defender for Cloud Vulnerability Assessment Validation
-- Investigated Defender for Cloud vulnerability assessment recommendations
-- Verified Defender for Servers Plan 2 configuration at the subscription level
-- Confirmed vulnerability assessment and agentless scanning settings
-- Validated that recommendations depend on observed scan telemetry
-- Documented scan latency and inventory population behaviour on a newly started VM
+### Day 3 — Defender for Cloud Vulnerability Assessment
+- Investigated vulnerability assessment recommendations  
+- Verified Defender for Servers Plan 2 configuration  
+- Confirmed agentless scanning and assessment settings  
+- Observed scan latency and inventory behaviour  
 
-📁 Day 3:  
-👉 [day-3-defender-investigation/README.md](day-3-defender-investigation/README.md)
+📁 [Day 3 Documentation](day-3-defender-investigation/README.md)
 
 ---
 
 ### Day 4 — Microsoft Sentinel Onboarding
-- Created a dedicated Log Analytics workspace for security monitoring
-- Enabled Microsoft Sentinel on the workspace
-- Verified successful Sentinel deployment
-- Confirmed Sentinel availability through the Microsoft Defender portal
-- Validated SIEM readiness prior to telemetry ingestion
+- Created a Log Analytics workspace  
+- Enabled Microsoft Sentinel  
+- Verified successful deployment  
+- Confirmed SIEM readiness  
 
-📁 Day 4:  
-👉 [day-4-sentinel-onboarding/README.md](day-4-sentinel-onboarding/README.md)
+📁 [Day 4 Documentation](day-4-sentinel-onboarding/README.md)
 
 ---
 
-### Day 5 — Analytics Rule Enablement (Defender XDR → Sentinel)
-- Installed the Microsoft Defender XDR solution from Sentinel Content Hub
-- Reviewed built-in analytics rule templates mapped to MITRE ATT&CK
-- Enabled a small baseline set of Microsoft-provided scheduled analytics rules
-- Verified rules are active and correctly mapped (severity / tactics / techniques)
-- Used Sentinel Logs (KQL) to confirm table availability (no telemetry yet)
+### Day 5 — Analytics Rule Enablement
+- Installed Microsoft Defender XDR solution  
+- Reviewed built-in detection templates (MITRE ATT&CK mapped)  
+- Enabled baseline analytics rules  
+- Validated rule configuration and availability  
 
-📁 Day 5:  
-👉 [day-5-analytics-rules/README.md](day-5-analytics-rules/README.md)
+📁 [Day 5 Documentation](day-5-analytics-rules/README.md)
 
 ---
 
-### Day 6 — Defender Telemetry & XDR Integration
-- Confirmed Defender XDR telemetry ingestion into Microsoft Sentinel
-- Validated availability of endpoint telemetry tables within Log Analytics
-- Explored Microsoft Defender tables such as DeviceProcessEvents and DeviceNetworkEvents
-- Confirmed SIEM readiness for detection engineering and alert generation
-- Observed how Defender telemetry becomes searchable through Sentinel KQL queries
+### Day 6 — Defender Telemetry Integration
+- Confirmed Defender telemetry ingestion into Sentinel  
+- Validated endpoint telemetry tables  
+- Queried DeviceProcessEvents and DeviceNetworkEvents  
+- Verified SIEM readiness for detection engineering  
 
-📁 Day 6:  
-👉 [day-6-defender-telemetry-xdr/README.md](day-6-defender-telemetry-xdr/README.md)
+📁 [Day 6 Documentation](day-6-defender-telemetry-xdr/README.md)
 
 ---
 
 ### Day 7 — Custom Detection Rule Development
-- Created a custom Microsoft Sentinel analytics rule using KQL
-- Designed the rule to detect suspicious activity within Defender telemetry
-- Configured rule scheduling, severity level, and incident creation settings
-- Validated rule deployment within Sentinel Analytics
-- Documented rule configuration and monitoring behaviour
+- Built a custom detection rule using KQL  
+- Designed logic to detect suspicious activity  
+- Configured rule scheduling and alerting  
+- Validated rule behaviour  
 
-📁 Day 7:  
-👉 [day-7-custom-detection-rule/README.md](day-7-custom-detection-rule/README.md)
+📁 [Day 7 Documentation](day-7-custom-detection-rule/README.md)
 
 ---
 
-### Day 8 — Detection Engineering: Enterprise Rule Pack
-- Designed a set of custom Sentinel detection rules targeting common attacker behaviours
-- Implemented multiple KQL-based analytics rules mapped to MITRE ATT&CK techniques
-- Detected activity including PowerShell abuse, malicious Office macro execution,
-  Living-Off-The-Land binary abuse, suspicious account creation, and abnormal network activity
-- Documented detection logic and rule behaviour
-- Explored potential SOC automation workflows and response playbooks
+### Day 8 — Detection Engineering
+- Created multiple detection rules targeting attacker techniques  
+- Covered PowerShell abuse, LOLBins, account creation, and network anomalies  
+- Mapped detections to MITRE ATT&CK  
+- Explored automation opportunities  
 
-📁 Day 8:  
-👉 [day-8-detection-engineering/README.md](day-8-detection-engineering/README.md)
+📁 [Day 8 Documentation](day-8-detection-engineering/README.md)
 
 ---
 
-### Day 9 — Detection Validation (Attack Simulation)
-- Simulated attacker techniques to trigger detections:
-  - Encoded PowerShell execution
-  - LOLBIN abuse using certutil
-  - Privilege escalation via account creation
-- Validated custom analytics rules successfully triggered alerts
-- Reviewed alert details and underlying telemetry
-- Improved detection rules by adding entity mapping
-- Observed duplicate alerts due to rule scheduling and query windows
+### Day 9 — Detection Validation
+- Simulated attacker techniques:
+  - Encoded PowerShell execution  
+  - LOLBin abuse (certutil)  
+  - Privilege escalation  
+- Triggered and validated alerts  
+- Improved detections using entity mapping  
+- Observed alert duplication behaviour  
 
-📁 Day 9:
-👉 [day-9-detection-validation/README.md](day-9-detection-validation/README.md)
+📁 [Day 9 Documentation](day-9-detection-validation/README.md)
 
 ---
 
-### Day 9 part 2 — SOC Investigation Workflow
-- Investigated alerts generated from simulated attack activity
-- Performed threat hunting using KQL queries to validate events
-- Analysed account creation and privilege escalation behaviour
-- Conducted process analysis using Microsoft Defender timeline
-- Correlated findings across alerts, logs, and endpoint telemetry
-- Classified alerts as a True Positive based on observed activity
-- Assessed the potential impact of the behaviour in a real environment
-- Defined appropriate response and remediation actions
+### Day 9 Part 2 — SOC Investigation Workflow
+- Investigated alerts from simulated activity  
+- Performed KQL-based threat hunting  
+- Analysed process and account behaviour  
+- Correlated logs across Defender and Sentinel  
+- Classified alerts as True Positive  
+- Defined response and remediation actions  
 
-This stage focuses on the investigation side of security operations, showing how alerts are analysed and validated rather than just generated.
-
-📁 Day 9 part 2:
-👉 [day-9-part-2-SOC-investigation/README.md](day-9-part-2-SOC-investigation/README.md)
+📁 [SOC Investigation Documentation](day-9-part-2-soc-investigation/README.md)
 
 ---
 
 ## Tools & Technologies
 
-- Microsoft Azure
-- Microsoft Defender for Cloud
-- Microsoft Defender for Endpoint (XDR)
-- Microsoft Sentinel (SIEM)
-- Log Analytics Workspace
-- KQL (Kusto Query Language)
-- Windows Server (Azure VM)
-- Azure Networking (VNet, NSG)
-- GitHub for documentation
+- Microsoft Azure  
+- Microsoft Defender for Cloud  
+- Microsoft Defender for Endpoint (XDR)  
+- Microsoft Sentinel (SIEM)  
+- Log Analytics Workspace  
+- KQL (Kusto Query Language)  
+- Windows Server (Azure VM)  
+- Azure Networking (VNet, NSG)  
+- GitHub  
 
 ---
 
 ## Future Work
 
-There are a few areas I would build on from this lab, particularly around moving from detection into prevention and hardening.
+- Improve security posture using Defender recommendations  
+- Implement endpoint controls (ASR rules, AppLocker)  
+- Explore Conditional Access policies  
+- Build automation using Logic Apps  
+- Simulate advanced attacker behaviour (persistence, lateral movement)  
+- Expand threat hunting using KQL  
 
-- Implement Defender for Cloud recommendations to improve the overall security posture of the VM and subscription  
-- Apply system hardening controls such as Attack Surface Reduction (ASR) rules and application control  
-- Explore Conditional Access and identity-based protections for stronger access control  
-- Build automated response actions using Logic Apps to reduce manual triage effort  
-- Expand simulations to include more realistic attacker behaviour (e.g. persistence, lateral movement)  
-- Continue developing KQL queries for deeper threat hunting and investigation  
-
-A follow-up lab will focus more on security controls (e.g. DLP and data protection), which can then be tied back into this environment.
+A follow-up lab focuses on security controls (AppLocker, DLP, endpoint hardening).
 
 ---
 
 ## Lab Outcome
 
-This lab walks through building and operating a basic cloud security monitoring setup using Microsoft Defender and Sentinel, with a focus on how alerts are actually generated and investigated.
+This lab demonstrates the end-to-end workflow of detecting and investigating security events in a cloud environment.
 
-Built an Azure environment and onboarded it into Defender for Cloud
-Configured Microsoft Sentinel and connected Defender telemetry
-Created and tuned custom detection rules using KQL
-Simulated attacker behaviour to generate realistic alerts
-Investigated alerts using Defender and Sentinel data
-Carried out basic triage and validated activity using endpoint telemetry
+- Built and secured an Azure environment using Defender for Cloud  
+- Onboarded Microsoft Sentinel and validated telemetry ingestion  
+- Developed and tested detection rules using KQL  
+- Simulated attacker behaviour to generate alerts  
+- Investigated alerts using Defender and Sentinel data  
+- Performed triage and validated activity using endpoint telemetry  
 
-The main takeaway from this lab was understanding how detection logic, telemetry, and alerting fit together in practice. It also highlighted some of the limitations, such as alert duplication, timing windows, and how certain activity can be blocked by Defender before it reaches Sentinel.
+The lab highlights how detection logic, telemetry, and alerting work together in practice. It also shows real-world challenges such as alert duplication, timing behaviour, and pre-emptive blocking by Defender.
 
-The next step is to focus more on prevention and control implementation, reducing the likelihood of this activity occurring in the first place.
+Overall, this reflects real SOC and cloud security workflows — not just generating alerts, but understanding what happened and deciding what action is required.
 
-Overall, this project reflects how security analysts work in practice. Not just generating alerts, but understanding what they mean, validating them, and deciding what action should be taken.
+---
+
+## Next Steps
+
+A second lab focuses on implementing security controls (AppLocker, DLP, and endpoint hardening) to move from detection into prevention.
