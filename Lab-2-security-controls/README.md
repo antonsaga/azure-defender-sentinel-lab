@@ -1,65 +1,116 @@
-# Lab 2: Security Controls & Hardening Lab
+# Lab 2 – Security Controls & Endpoint Hardening
 
-> **Status:** 🔄 In Progress — actively being built. Days will be added as the lab develops.
+> **Status:** 🔄 In Progress — actively being built. 
+> Days will be added as the lab develops.
 
 ---
 
 ## Overview
 
-Where **Lab 1** focused on detection, monitoring, and SOC investigation, **Lab 2** shifts to the other side of the security stack: **prevention, hardening, and control engineering**.
+Where Lab 1 focused on detection, monitoring, and SOC investigation, 
+Lab 2 shifts to the other side of the security stack: prevention, 
+hardening, and control engineering.
 
-This lab simulates how a security team implements, enforces, and monitors endpoint and identity security controls using the Microsoft security stack — without a dedicated enterprise environment. Everything here is self-hosted and self-directed.
+This lab simulates how a security team implements, enforces, and 
+validates endpoint security controls using the Microsoft security 
+stack — without a dedicated enterprise environment. Everything here 
+is self-hosted and self-directed.
 
-The goal is to demonstrate practical, hands-on experience with the controls that underpin real-world endpoint and identity security programmes.
+The goal is to demonstrate practical, hands-on experience with the 
+controls that underpin real-world endpoint security programmes.
+
+---
+
+## Environment
+
+- **VM:** lab2-endpoint (Azure, UK West, Windows 10)
+- **Access:** Azure Bastion
+- **Tools:** AppLocker, Group Policy, Microsoft Defender ASR, 
+  Microsoft Purview, Intune, Azure AD / Entra ID, Sentinel
 
 ---
 
 ## What This Lab Covers
 
-| Area | Tools / Technology | Focus |
+| Area | Tools | Focus |
 |---|---|---|
 | Application Control | AppLocker, Group Policy | Allow-listing, audit vs enforcement, rule design |
 | Attack Surface Reduction | Microsoft Defender ASR Rules | LOLBin prevention, Office-based attack chains |
 | Device Control | Intune / Defender for Endpoint | USB restriction, data exfiltration prevention |
-| Data Loss Prevention | Microsoft Purview DLP | Sensitive data detection, endpoint + email policy |
+| Data Loss Prevention | Microsoft Purview DLP | Sensitive data detection, endpoint and email policy |
 | Identity & Access Control | Azure AD Conditional Access | MFA enforcement, Zero Trust access policies |
 | Monitoring & Validation | Defender, Sentinel | Control effectiveness, log correlation |
 
 ---
 
 ## Lab Structure
-
 ```
-lab-2-security-controls/
+Lab-2-security-controls/
 │
 ├── README.md                        ← You are here
-├── images/                          ← Architecture diagrams & overview screenshots
 │
-├── day-01-environment-setup/        ✅ Complete
-├── day-02-applocker-audit-mode/     ✅ Complete
-├── day-03-applocker-enforcement/    🔄 In progress
-├── day-04-asr-rules/                ⏳ Planned
-├── day-05-device-control-usb/       ⏳ Planned
-├── day-06-dlp-policy/               ⏳ Planned
-├── day-07-dlp-testing/              ⏳ Planned
-├── day-08-conditional-access/       ⏳ Planned
-├── day-09-monitoring-logs/          ⏳ Planned
+├── day-1-Applocker/                 ✅ Complete
+│   └── day1.md
+│
+├── day-2-Applocker/                 ✅ Complete
+│   └── day2.md
+│
+├── day-3-applocker-enforcement/     🔄 In Progress
+│   └── day3.md
+│
+├── day-4-asr-rules/                 ⏳ Planned
+├── day-5-device-control-usb/        ⏳ Planned
+├── day-6-dlp-policy/                ⏳ Planned
+├── day-7-dlp-testing/               ⏳ Planned
+├── day-8-conditional-access/        ⏳ Planned
+├── day-9-monitoring-logs/           ⏳ Planned
 ├── day-10-review-lessons-learned/   ⏳ Planned
 ```
-
-Each day folder contains a `README.md` writeup with objective, key actions, observations, and screenshots.
+Each day folder contains a README writeup covering objective, 
+actions taken, observations, analyst commentary, and screenshots.
 
 ---
 
 ## Key Themes
 
-**Allow-listing over block-listing** — AppLocker is configured using an allow-list model, which is significantly more secure than traditional AV/deny-list approaches. The lab explores the operational tradeoffs of this in practice.
+**Allow-listing over block-listing** — AppLocker is configured 
+using an allow-list model, which is significantly more resilient 
+than traditional AV or deny-list approaches. The lab explores the 
+operational trade-offs of this in practice, including the risk of 
+misconfiguration and VM lockout.
 
-**Audit before enforcement** — A deliberate methodology is followed throughout: policies are first run in audit mode to understand real-world impact before enforcement is applied. This reflects production best practice and avoids service disruption.
+**Audit before enforcement** — All policies are first run in audit 
+mode to understand real-world impact before enforcement is applied. 
+This reflects production change management practice and avoids 
+unintended service disruption.
 
-**Controls generate telemetry** — Each control implemented is treated not just as a prevention mechanism but as a data source. Logs and alerts are reviewed in Defender and Sentinel, tying back to the detection work in Lab 1.
+**Controls generate telemetry** — Each control is treated not just 
+as a prevention mechanism but as a data source. AppLocker block 
+events, ASR alerts, and DLP detections are reviewed and exported, 
+tying prevention back to the detection work in Lab 1.
 
-**Failure is documented** — Where configurations caused issues (e.g. AppLocker lockout scenarios), the cause, impact, and fix are written up. These are as valuable to document as successes.
+**Failure is documented** — Where configurations caused issues 
+(such as the Azure Bastion failure following subscription 
+reactivation, and the AppLocker administrator exemption behaviour 
+during enforcement testing), the cause, impact, and resolution are 
+written up. These are as instructive to document as successes.
+
+---
+
+## Day-by-Day Summary
+
+| Day | Topic | Status |
+|---|---|---|
+| Day 1 | AppLocker setup and audit mode configuration | ✅ Complete |
+| Day 2 | AppLocker policy tuning and controlled enforcement | ✅ Complete |
+| Day 3 | AppLocker enforcement testing and validation | 🔄 In Progress |
+| Day 4 | Attack Surface Reduction (ASR) rules | ⏳ Planned |
+| Day 5 | Device control — USB restriction | ⏳ Planned |
+| Day 6 | DLP policy configuration | ⏳ Planned |
+| Day 7 | DLP testing and validation | ⏳ Planned |
+| Day 8 | Conditional Access policies | ⏳ Planned |
+| Day 9 | Monitoring and log correlation | ⏳ Planned |
+| Day 10 | Review and lessons learned | ⏳ Planned |
 
 ---
 
@@ -68,25 +119,15 @@ Each day folder contains a `README.md` writeup with objective, key actions, obse
 | | Lab 1 | Lab 2 |
 |---|---|---|
 | **Focus** | Detection & SOC | Prevention & Hardening |
-| **Primary tools** | Sentinel, Defender XDR, KQL | AppLocker, ASR, Purview DLP, Conditional Access |
+| **Primary tools** | Sentinel, Defender XDR, KQL | AppLocker, ASR, Purview, Conditional Access |
 | **Simulates** | SOC analyst / detection engineer | Security engineer / control implementer |
 | **Output** | Detection rules, alert triage, incident response | Hardened endpoint baseline, access policies, DLP |
 
-Together, they cover both sides of a security programme: **detecting threats** and **preventing them from materialising in the first place**.
-
----
-
-## Environment
-
-- Windows 10/11 VM (local lab environment)
-- Microsoft 365 Developer Tenant (E5 trial)
-- Azure AD / Entra ID
-- Microsoft Defender for Endpoint (trial)
-- Microsoft Purview compliance portal
-- Microsoft Sentinel (connected from Lab 1)
+Together they cover both sides of a security programme — detecting 
+threats and preventing them from materialising in the first place.
 
 ---
 
 ## Related
 
-- 🔗 [Lab 1 — Azure Sentinel Detection Engineering Lab](../README.md)
+- 🔗 [Lab 1 — Azure Defender & Sentinel SOC Lab](../README.md)
